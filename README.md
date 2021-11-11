@@ -5,7 +5,7 @@ FindCo university project
 
 Prerequesites
 - [NodeJS](https://nodejs.org/en/).
-- [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+- [Node Package Manager](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
 
 
 ## Installing the Project

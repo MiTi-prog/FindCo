@@ -42,7 +42,7 @@ http://localhost:8080/api/hello/1
 
 Project structure
 ```
-Everything DB Related is in ./Database
+Everything DB Related is in ./database
 
 
 Routes -- ./app/routes

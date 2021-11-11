@@ -1,5 +1,5 @@
 # FindCo
-FindCo university project
+FindCo full stack university project
 
 ## Running FindCO API
 

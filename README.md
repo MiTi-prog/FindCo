@@ -20,6 +20,8 @@ edit ``.env`` to suit your needs
 ```bash
 API_PORT = 8080
 MONGODB_URI=YourMongoDBConnectionURI
+JWT_SECRET=death-wagon
+JWT_EXPIRATION="15m"
 ```
 
 

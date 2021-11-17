@@ -1,20 +1,12 @@
 const errors = require('restify-errors');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const User = require('../models/User');
+const User = require('../models/Application_user');
 const auth = require('../../middleware/auth');
 const config = require("../../config/default");
 
 function register(req, res, next) {
-    const { first_name, last_name, email, password, date_birth, role } = req.body;
-     const user = new User({
-         first_name,
-         last_name,
-         email,
-         password,
-         date_birth,
-         role
-    });
+    const user = new User(req.body);
      bcrypt.genSalt(10, (err, salt) => {
         bcrypt.hash(user.password, salt, async (err, hash) => {
             // Hash Password
@@ -53,6 +45,20 @@ async function login (req, res, next) {
     }
 }
 
+function GetAlllContractors(req, res, next)
+{
+    // find each user with role matching 'contractor', ***selecting the `first_name` and `last_name` fields*** (with -_id you exclude _id from returning to your browser
+    User.find({ role: "contractor"}, '-_id first_name last_name', function(err, doc) {
+        if (err) {
+            return next(
+                new errors.InvalidContentError(err.errors.name.message),
+            );
+        }
+        res.send(doc);
+        next();
+    });
+}
+
 async function authTest (req, res, next) {
     // Check for JSON
     if (!req.is('application/json')) {
@@ -76,6 +82,7 @@ async function authTest (req, res, next) {
     module.exports = {
         register:register,
         login:login,
+        GetAlllContractors:GetAlllContractors,
         authTest:authTest,
         list: function listAction (req, res, next) {
             res.send(myDb.getAll());

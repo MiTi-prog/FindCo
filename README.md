@@ -5,7 +5,7 @@ FindCo full stack university project
 
 Prerequesites
 - [NodeJS](https://nodejs.org/en/).
-- [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+- [Node Package Manager](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
 
 
 ## Installing the Project
@@ -20,6 +20,8 @@ edit ``.env`` to suit your needs
 ```bash
 API_PORT = 8080
 MONGODB_URI=YourMongoDBConnectionURI
+JWT_SECRET=death-wagon
+JWT_EXPIRATION="15m"
 ```
 
 

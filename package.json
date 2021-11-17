@@ -7,20 +7,26 @@
     "email": "oleg.cherniy@gmail.com"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "config": "*",
     "dotenv": "^10.0.0",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.0.12",
     "mongoose-string-query": "^0.2.7",
     "mongoose-timestamp": "^0.6.0",
+    "mongoose-unique-validator": "^3.0.0",
+    "node-uuid": "^1.4.8",
     "restify": "^8.6.0",
     "restify-errors": "^8.0.2",
+    "restify-jwt-community": "^1.1.20",
     "restify-plugins": "^1.6.0"
   },
   "devDependencies": {
-    "jasmine-node": "*"
+    "jasmine-node": "*",
+    "nodemon": "^2.0.15"
   },
   "scripts": {
-    "start": "node server.js",
+    "start": "nodemon server.js",
     "test": "node ./node_modules/jasmine-node/lib/jasmine-node/cli.js spec"
   },
   "engines": {

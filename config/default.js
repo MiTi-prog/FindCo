@@ -12,4 +12,6 @@ module.exports = {
 	db: {
 		uri: process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/api',
 	},
+    JWT_SECRET: process.env.JWT_SECRET || "not4you",
+    JWT_EXPIRATION: process.env.JWT_EXPIRATION || "15m"
 };

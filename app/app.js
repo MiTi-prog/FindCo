@@ -5,7 +5,8 @@ const config = require('config');
 const restify = require('restify');
 const mongoose = require('mongoose');
 const restifyPlugins = require('restify-plugins');
-	
+const swagger = require('restify-swagger-jsdoc'); //For documentation
+
 
 /**
   * Initialize Server
@@ -13,6 +14,26 @@ const restifyPlugins = require('restify-plugins');
 var server = restify.createServer(
     config.app
 );
+
+/**
+ * Initialize Restify documentation
+ */
+
+swagger.createSwaggerPage({
+        title: 'API documentation',
+        version: '1.0.0',
+        description: "Customer API Information",
+    server: server, // created restify server object,
+    //prefix: 'v1',
+    path: '/api-docs', // url to view generated docs,,
+    //apis: ['../api.yml'], // this is where swagger can find
+    //apis: ['./test.yml'], // this is where swagger can find
+    //definitions: ["./APIDefinition.yml"], // this is where you add definitions to swagger ( $ref: "#/definitions/AllContractors" )
+    apis: ["./app/controllers/*.js"]        // this is where swagger can find
+                                            // files containing jsdoc or can point
+                                            // to api.yaml file
+                                            // to generate docs from.
+});
 
 /**
   * Middleware

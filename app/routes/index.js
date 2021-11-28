@@ -11,4 +11,6 @@ module.exports = function routes(server) {
   server.get('/v1/contractors', APIV1Controller.GetAlllContractors);
 
   server.get('/api/hello', APIV1Controller.list);
-  server.get('/api/hello/:id', APIV1Controller.getId)
+  server.get('/api/hello/:id', APIV1Controller.getId);
+
+}

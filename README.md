@@ -34,6 +34,11 @@ To run tests (Testing framework is [Jasmine](https://www.npmjs.com/package/jasmi
 ```
 npm test
 ```
+
+To populate Company Database from Online source run
+```
+npm run DBTool
+```
 ## Usefull for developers
 
 For now API only has 2 routes

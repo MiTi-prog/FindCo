@@ -10,7 +10,7 @@ Prerequesites
 
 ## Installing the Project
 
-after you have NodejS + NPM installed execute from project folder
+after you have NodejS + NPM installed execute from project folder (cd rest-api)
 ```bash
 npm install
 ```

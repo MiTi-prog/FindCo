@@ -1,12 +1,13 @@
-const mongoose = required('mongoose');
+const mongoose = require('mongoose');
+const uuid = require('node-uuid');
 const uniqueValidator = require('mongoose-unique-validator');
 
 const CompanySchema = new mongoose.Schema(
     {
-        _id_company: { 
-            type: String, 
-            default: uniqueValidator.v1
-        },
+        _id: { 
+			type: String,
+			default: uuid.v1
+		},
         company_name: {
             type: String,
             unique: true,
@@ -19,14 +20,16 @@ const CompanySchema = new mongoose.Schema(
         },
         email: {
             type: String,
-            required: true,
+            //required: true,
             max: 50,
-            unique: true
+			default: ""
+            //unique: true
         },
         phone: {
             type: Number,
-            required: true,
-            unique: true
+			default: 000000000
+            //required: true,
+            //unique: true
         },
         street_address: {
             type: String,

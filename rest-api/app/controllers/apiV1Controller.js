@@ -22,6 +22,53 @@ function register(req, res, next) {
         });
     });
 }
+/**
+ /**
+ * @swagger
+ * /login:
+ *  post:
+ *    summary: "Allows user to login"
+ *    description: Login to the system
+ *    operationId: "login"
+ *    requestBody:
+ *    schema:
+ *      type: object
+ *      properties:
+ *          password:
+ *              type: string
+ *          email:
+ *              type: string
+ *      examples:
+ *          '0':
+ *              value: "{\r\n    \"email\": \"test@raca.si\",\r\n    \"password\": \"test\"\r\n}"
+ *    responses:
+ *      '200':
+ *        description: A successful response
+ *        schema:
+ *          type: object
+ *          properties:
+ *              exp:
+ *                  type: integer
+ *              iat:
+ *                  type: integer
+ *              token:
+ *                  type: string
+ *      '401':
+ *        description: User not autenticated response
+ *        schema:
+ *          type: object
+ *          properties:
+ *              type:
+ *                  type: string
+ *              message:
+ *                  type: string
+ *        examples:
+ *        type: object
+ *        '0':
+ *             value: '{"code":"Unauthorized","message":"Authentication Failed"}'
+ *
+ *
+ */
 async function login (req, res, next) {
     const { email, password } = req.body;
 
@@ -44,7 +91,25 @@ async function login (req, res, next) {
         return next(new errors.UnauthorizedError(err));
     }
 }
-
+/**
+ * @swagger
+ * /contractors:
+ *  get:
+ *    summary: "Returns contractors list"
+ *    description: Get list of all contractors
+ *    operationId: "GetAlllContractors"
+ *    parameters: []
+ *    responses:
+ *      '200':
+ *        description: A successful response
+ *        schema:
+ *          type: "object"
+ *          properties:
+ *              first_name:
+ *                  type: "string"
+ *              last_name:
+ *                  type: "string"
+ */
 function GetAlllContractors(req, res, next)
 {
     // find each user with role matching 'contractor', ***selecting the `first_name` and `last_name` fields*** (with -_id you exclude _id from returning to your browser

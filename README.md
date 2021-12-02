@@ -10,7 +10,7 @@ Prerequesites
 
 ## Installing the Project
 
-after you have NodejS + NPM installed execute from project folder
+after you have NodejS + NPM installed execute from project folder (cd rest-api)
 ```bash
 npm install
 ```
@@ -33,6 +33,11 @@ npm start
 To run tests (Testing framework is [Jasmine](https://www.npmjs.com/package/jasmine-node))
 ```
 npm test
+```
+
+To populate Company Database from Online source run
+```
+npm run DBTool
 ```
 ## Usefull for developers
 

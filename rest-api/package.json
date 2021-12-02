@@ -16,10 +16,12 @@
     "mongoose-timestamp": "^0.6.0",
     "mongoose-unique-validator": "^3.0.0",
     "node-uuid": "^1.4.8",
+    "request": "^2.88.2",
     "restify": "^8.6.0",
     "restify-errors": "^8.0.2",
     "restify-jwt-community": "^1.1.20",
-    "restify-plugins": "^1.6.0"
+    "restify-plugins": "^1.6.0",
+    "restify-swagger-jsdoc": "^3.2.4"
   },
   "devDependencies": {
     "jasmine-node": "*",
@@ -27,7 +29,8 @@
   },
   "scripts": {
     "start": "nodemon server.js",
-    "test": "node ./node_modules/jasmine-node/lib/jasmine-node/cli.js spec"
+    "test": "node ./node_modules/jasmine-node/lib/jasmine-node/cli.js spec",
+    "DBTool": "node ./database/DBCompanyInsertFromWEB.js"
   },
   "engines": {
     "node": ">=0.10.x"

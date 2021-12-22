@@ -1,9 +1,50 @@
 const errors = require('restify-errors');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const User = require('../models/Application_user');
+const User = require('../models/MySQL_models/application_user');
 const auth = require('../../middleware/auth');
 const config = require("../../config/default");
+
+
+/* -- <MySQL connection> --
+const mysql = require('mysql');
+// Add the credentials to access your database
+const connection = mysql.createConnection({
+    host     : process.env.DB_HOST,
+    user     : process.env.DB_USER,
+    password : process.env.DB_PASS,
+    database : process.env.DB_NAME
+});
+
+
+// connect to mysql
+connection.connect(function(err) {
+    // in case of error
+    if(err){
+        console.log(err.code);
+        console.log(err.fatal);
+    }
+});
+
+// Perform a query
+$query = "SELECT * from application_user LIMIT 5";
+
+connection.query($query, function(err, rows, fields) {
+    if(err){
+        console.log("An error ocurred performing the query.");
+        return;
+    }
+
+    console.log("Query succesfully executed: ", rows);
+});
+//closing connection with server
+connection.end(function(){
+    console.log("Connection was closed");
+});
+// -- </MySQL connection> --
+
+*/
+
 
 function register(req, res, next) {
     const user = new User(req.body);
@@ -13,7 +54,7 @@ function register(req, res, next) {
             user.password = hash;
             // Save User
             try {
-                const newUser = await user.save();
+                const newUser = await user.save();  //sql zamenjaj
                 res.send(201, "User created successfully");
                 next();
             } catch (err) {
@@ -113,7 +154,7 @@ async function login (req, res, next) {
 function GetAlllContractors(req, res, next)
 {
     // find each user with role matching 'contractor', ***selecting the `first_name` and `last_name` fields*** (with -_id you exclude _id from returning to your browser
-    User.find({ role: "contractor"}, '-_id first_name last_name', function(err, doc) {
+    User.findOne({where: { role: "contractor"}}, '-_id first_name last_name', function(err, doc) {
         if (err) {
             return next(
                 new errors.InvalidContentError(err.errors.name.message),
@@ -159,3 +200,4 @@ async function authTest (req, res, next) {
         }
     }
 }())
+

@@ -1,6 +1,8 @@
 const bcrypt = require('bcryptjs');
-const mongoose = require('mongoose');
-const User = mongoose.model('Application_user');
+//const mongoose = require('mongoose');
+//const User = mongoose.model('application_user');
+const Sequelize = require('sequelize');
+const User = Sequelize.Model;
 
 exports.authenticate = (email, password) => {
     return new Promise(async (resolve, reject) => {

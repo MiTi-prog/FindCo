@@ -6,7 +6,7 @@ const restify = require('restify');
 const mongoose = require('mongoose');
 const restifyPlugins = require('restify-plugins');
 const swagger = require('restify-swagger-jsdoc'); //For documentation
-
+const Sequelize = require('sequelize');
 
 /**
   * Initialize Server
@@ -47,16 +47,35 @@ server.use(restify.plugins.bodyParser(server.acceptable));
   */
 server.listen(config.server.port, () => {
   // establish connection to mongodb
-  mongoose.Promise = global.Promise;
-  mongoose.connect(config.db.uri);
-  const db = mongoose.connection;
-  db.on('error', (err) => {
+  //mongoose.Promise = global.Promise;
+  //mongoose.connect(config.db.uri);
+  //const db = mongoose.connection;
+  var sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
+        host: 'localhost',
+        dialect: 'mysql',
+        port: 3306,
+        define: {
+            paranoid: true
+        }
+  });
+
+    sequelize.authenticate()
+    .then(() => {
+        require('./routes')(server);
+        console.log('Connection has been established successfully.');
+    })
+    .catch(err => {
+        console.error('Unable to connect to the database:', err);
+        process.exit(1);
+    });
+  /*sequelize.on('error', (err) => {
 	  require('./routes')(server);
       console.log(`Server is listening on port ${config.server.port} but DB Connetion is not working, so server cannot get any real data`);
 	  console.error('Reason that DB Failed is: ${err}');
   });
-  db.once('open', () => {
+  sequelize.once('open', () => {
       require('./routes')(server);
       console.log(`Server is listening on port ${config.server.port}`);
-  });
+  });*/
+
 });

@@ -10,15 +10,6 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.DATE,
       allowNull: false
     },
-    application_user_idApplication_user: {
-      type: DataTypes.BLOB,
-      allowNull: false,
-      primaryKey: true,
-      references: {
-        model: 'application_user',
-        key: 'idApplication_user'
-      }
-    },
     company_idCompany: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -26,6 +17,15 @@ module.exports = function(sequelize, DataTypes) {
       references: {
         model: 'company',
         key: 'idCompany'
+      }
+    },
+    application_user_idApplication_user: {
+      type: DataTypes.BLOB,
+      allowNull: false,
+      primaryKey: true,
+      references: {
+        model: 'application_user',
+        key: 'idApplication_user'
       }
     }
   }, {
@@ -39,14 +39,7 @@ module.exports = function(sequelize, DataTypes) {
         using: "BTREE",
         fields: [
           { name: "idContraction" },
-          { name: "application_user_idApplication_user" },
           { name: "company_idCompany" },
-        ]
-      },
-      {
-        name: "fk_contraction_application_user_idx",
-        using: "BTREE",
-        fields: [
           { name: "application_user_idApplication_user" },
         ]
       },
@@ -55,6 +48,13 @@ module.exports = function(sequelize, DataTypes) {
         using: "BTREE",
         fields: [
           { name: "company_idCompany" },
+        ]
+      },
+      {
+        name: "fk_contraction_application_user1_idx",
+        using: "BTREE",
+        fields: [
+          { name: "application_user_idApplication_user" },
         ]
       },
     ]

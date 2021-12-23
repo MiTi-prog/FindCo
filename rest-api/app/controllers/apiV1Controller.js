@@ -1,7 +1,9 @@
 const errors = require('restify-errors');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const User = require('../models/MySQL_models/application_user');
+const Sequelize = require('sequelize');
+const User = Sequelize.Model;
+//const User = require('../models/MySQL_models/application_user');
 const auth = require('../../middleware/auth');
 const config = require("../../config/default");
 
@@ -154,7 +156,7 @@ async function login (req, res, next) {
 function GetAlllContractors(req, res, next)
 {
     // find each user with role matching 'contractor', ***selecting the `first_name` and `last_name` fields*** (with -_id you exclude _id from returning to your browser
-    User.findOne({where: { role: "contractor"}}, '-_id first_name last_name', function(err, doc) {
+    User.findOne({where: { role: "contractor"}}, '-idApplication_user first_name last_name', function(err, doc) {
         if (err) {
             return next(
                 new errors.InvalidContentError(err.errors.name.message),

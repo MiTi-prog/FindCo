@@ -1,15 +1,10 @@
 const Sequelize = require('sequelize');
-const {getDataType} = require("sequelize-automate/src/util/definition");
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('application_user', {
     idApplication_user: {
       type: DataTypes.BLOB,
       allowNull: false,
-      primaryKey: true,
-      get() {
-        const bit = getDataValue();
-        return this.getDataValue(Buffer.from(uuidV4Bytes(16).replace('-', ''), 'hex'));
-      },
+      primaryKey: true
     },
     first_name: {
       type: DataTypes.STRING(45),
@@ -62,11 +57,6 @@ module.exports = function(sequelize, DataTypes) {
     application_usercol: {
       type: DataTypes.STRING(45),
       allowNull: true
-    },
-    contraction_idContraction: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      primaryKey: true
     }
   }, {
     sequelize,
@@ -80,7 +70,6 @@ module.exports = function(sequelize, DataTypes) {
         using: "BTREE",
         fields: [
           { name: "idApplication_user" },
-          { name: "contraction_idContraction" },
         ]
       },
     ]

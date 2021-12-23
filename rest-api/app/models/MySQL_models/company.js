@@ -58,15 +58,6 @@ module.exports = function(sequelize, DataTypes) {
         model: 'application_user',
         key: 'idApplication_user'
       }
-    },
-    application_user_contraction_idContraction: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      primaryKey: true,
-      references: {
-        model: 'application_user',
-        key: 'contraction_idContraction'
-      }
     }
   }, {
     sequelize,
@@ -80,7 +71,6 @@ module.exports = function(sequelize, DataTypes) {
         fields: [
           { name: "idCompany" },
           { name: "application_user_idApplication_user" },
-          { name: "application_user_contraction_idContraction" },
         ]
       },
       {
@@ -88,7 +78,6 @@ module.exports = function(sequelize, DataTypes) {
         using: "BTREE",
         fields: [
           { name: "application_user_idApplication_user" },
-          { name: "application_user_contraction_idContraction" },
         ]
       },
     ]

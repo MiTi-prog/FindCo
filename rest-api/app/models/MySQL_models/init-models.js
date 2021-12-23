@@ -8,14 +8,10 @@ function initModels(sequelize) {
   var company = _company(sequelize, DataTypes);
   var contraction = _contraction(sequelize, DataTypes);
 
-  application_user.belongsToMany(application_user, { as: 'application_user_contraction_idContraction_application_users', through: company, foreignKey: "application_user_idApplication_user", otherKey: "application_user_contraction_idContraction" });
-  application_user.belongsToMany(application_user, { as: 'application_user_idApplication_user_application_users', through: company, foreignKey: "application_user_contraction_idContraction", otherKey: "application_user_idApplication_user" });
   application_user.belongsToMany(company, { as: 'company_idCompany_companies', through: contraction, foreignKey: "application_user_idApplication_user", otherKey: "company_idCompany" });
-  company.belongsToMany(application_user, { as: 'application_user_idApplication_user_application_user_contractions', through: contraction, foreignKey: "company_idCompany", otherKey: "application_user_idApplication_user" });
+  company.belongsToMany(application_user, { as: 'application_user_idApplication_user_application_users', through: contraction, foreignKey: "company_idCompany", otherKey: "application_user_idApplication_user" });
   company.belongsTo(application_user, { as: "application_user_idApplication_user_application_user", foreignKey: "application_user_idApplication_user"});
   application_user.hasMany(company, { as: "companies", foreignKey: "application_user_idApplication_user"});
-  company.belongsTo(application_user, { as: "application_user_contraction_idContraction_application_user", foreignKey: "application_user_contraction_idContraction"});
-  application_user.hasMany(company, { as: "application_user_contraction_idContraction_companies", foreignKey: "application_user_contraction_idContraction"});
   contraction.belongsTo(application_user, { as: "application_user_idApplication_user_application_user", foreignKey: "application_user_idApplication_user"});
   application_user.hasMany(contraction, { as: "contractions", foreignKey: "application_user_idApplication_user"});
   contraction.belongsTo(company, { as: "company_idCompany_company", foreignKey: "company_idCompany"});

@@ -2,9 +2,10 @@ const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('company', {
     idCompany: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.BLOB,
       allowNull: false,
-      primaryKey: true
+      primaryKey: true,
+      defaultValue: 2, /*We need this because sequilize cannot insert NULL primary key) */
     },
     company_name: {
       type: DataTypes.STRING(45),

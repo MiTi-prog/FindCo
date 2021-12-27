@@ -50,19 +50,26 @@ server.listen(config.server.port, () => {
   //mongoose.Promise = global.Promise;
   //mongoose.connect(config.db.uri);
   //const db = mongoose.connection;
-  var sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
-        host: 'localhost',
+  var sequelize = new Sequelize(config.db.name, config.db.user, config.db.password, {
+        host: config.db.host,
         dialect: 'mysql',
         port: 3306,
+      // disable logging; default: console.log
+        logging: false,
         define: {
             paranoid: true
         }
   });
 
+    //Init models
+    var initModels = require("./models/MySQL_models/init-models").initModels;
+    var models =  initModels(sequelize);
+    exports.models = models;
+
     sequelize.authenticate()
     .then(() => {
         require('./routes')(server);
-        console.log('Connection has been established successfully.');
+        console.log(`Server is listening on port ${config.server.port}`);
     })
     .catch(err => {
         console.error('Unable to connect to the database:', err);

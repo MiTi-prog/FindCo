@@ -11,7 +11,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
     company_idCompany: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.BLOB,
       allowNull: false,
       primaryKey: true,
       references: {

@@ -1,14 +1,14 @@
 const bcrypt = require('bcryptjs');
-//const mongoose = require('mongoose');
-//const User = mongoose.model('application_user');
 const Sequelize = require('sequelize');
-const User = Sequelize.Model;
+
+const main = require('../app/app.js');
+const User = main.models.application_user;
 
 exports.authenticate = (email, password) => {
     return new Promise(async (resolve, reject) => {
         try {
             // Get user by email
-            const user = await User.findOne({ email });
+            const user = await User.findOne({ where : {email:email}, raw: true});
 
             // Match Password
             bcrypt.compare(password, user.password, (err, isMatch) => {
@@ -22,3 +22,15 @@ exports.authenticate = (email, password) => {
         }
     });
 };
+
+async function parseJwt (token) {
+
+    const base64Url = token.split('.')[1];
+    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    const buff = Buffer.from(base64, 'base64');
+    const payloadinit = buff.toString('ascii');
+    const payload = JSON.parse(payloadinit);
+
+    return payload;
+};
+exports.parseJWT = parseJwt;

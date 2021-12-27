@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS `findco`.`application_user` (
   `first_name` VARCHAR(45) NOT NULL,
   `last_name` VARCHAR(45) NOT NULL,
   `email` VARCHAR(45) NOT NULL,
-  `password` VARCHAR(45) NOT NULL,
+  `password` LONGTEXT NOT NULL,
   `date_birth` DATE NOT NULL,
   `phone` INT NOT NULL,
   `street_address` VARCHAR(100) NOT NULL,
@@ -22,7 +22,7 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb3;
 
 CREATE TABLE IF NOT EXISTS `findco`.`company` (
-  `idCompany` INT NOT NULL,
+  `idCompany` BINARY(16) NOT NULL,
   `company_name` VARCHAR(45) NOT NULL,
   `tax_number` VARCHAR(45) NOT NULL,
   `email` VARCHAR(50) NOT NULL,
@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `findco`.`company` (
   CONSTRAINT `fk_company_application_user1`
     FOREIGN KEY (`application_user_idApplication_user`)
     REFERENCES `findco`.`application_user` (`idApplication_user`)
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb3;
@@ -48,7 +48,7 @@ DEFAULT CHARACTER SET = utf8mb3;
 CREATE TABLE IF NOT EXISTS `findco`.`contraction` (
   `idContraction` INT NOT NULL,
   `timestamp` TIMESTAMP NOT NULL,
-  `company_idCompany` INT NOT NULL,
+  `company_idCompany` BINARY(16) NOT NULL,
   `application_user_idApplication_user` BINARY(16) NOT NULL,
   PRIMARY KEY (`idContraction`, `company_idCompany`, `application_user_idApplication_user`),
   INDEX `fk_contraction_company1_idx` (`company_idCompany` ASC),
@@ -88,13 +88,25 @@ END;
 $$
 
 DELIMITER $$
-CREATE  TRIGGER `generate_UUID`
+CREATE  TRIGGER `generate_UUID_User`
   BEFORE
   INSERT
   ON `application_user`
   FOR EACH ROW
   BEGIN 
     SET NEW.idApplication_user = UUID_TO_BIN(UUID()); 
+END;
+$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE  TRIGGER `generate_UUID_Company`
+  BEFORE
+  INSERT
+  ON `company`
+  FOR EACH ROW
+  BEGIN 
+    SET NEW.idCompany = UUID_TO_BIN(UUID()); 
 END;
 $$
 DELIMITER ;

@@ -1,0 +1,668 @@
+openapi: 3.0.0
+info:
+  title: FindCO
+  description: >-
+    Find Conctractor is an University project aiming to provide an easy way for
+    users to find their handy-man
+  version: 1.0.0
+servers:
+  - url: localhost://
+paths:
+  /080/v1/register:
+    post:
+      tags:
+        - General
+      summary: Register User
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                first_name: Roman
+                last_name: Koman
+                email: info@romun.si
+                password: test
+                date_birth: '2021-01-01T23:00:00.000+00:00'
+                phone: '031112779'
+                street_address: Jurckova 215
+                city: Maribor
+                postal_code: '1200'
+                country: Slovenia
+                role: admin
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '201':
+          description: Created
+          headers:
+            Server:
+              schema:
+                type: string
+                example: FindCO
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Content-Length:
+              schema:
+                type: integer
+                example: '58'
+            Date:
+              schema:
+                type: string
+                example: Thu, 30 Dec 2021 09:16:00 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                status: success
+                message: User created successfully
+        '403':
+          description: Forbidden
+          headers:
+            Server:
+              schema:
+                type: string
+                example: FindCO
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Content-Length:
+              schema:
+                type: integer
+                example: '50'
+            Date:
+              schema:
+                type: string
+                example: Thu, 30 Dec 2021 09:17:18 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                status: error
+                message: User already exists
+  /080/v1/login:
+    post:
+      tags:
+        - General
+      summary: Login Invalid User
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                email: info@romun.si
+                password: test1
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '401':
+          description: Unauthorized
+          headers:
+            Server:
+              schema:
+                type: string
+                example: FindCO
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Content-Length:
+              schema:
+                type: integer
+                example: '58'
+            Date:
+              schema:
+                type: string
+                example: Thu, 30 Dec 2021 09:53:28 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                code: Unauthorized
+                message: Password did not match
+  /080/v1/test:
+    get:
+      tags:
+        - General
+      summary: Test Authenticated resource
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: >-
+            jwt
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MThmYjJhN2I4M2FiNjIyY2Y0YzJlNGIiLCJmaXJzdF9uYW1lIjoiSmFuZXoyIiwibGFzdF9uYW1lIjoiTm92YWsiLCJlbWFpbCI6InRlc3RAdGVzdC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCRXZk1hQThha0R2LmEzWTAwZnhvenkuWmV0MTAxejZCeS43aXRieDJBT2JXNEVLcDBwUTA1TyIsImRhdGVfYmlydGgiOiIyMDIwLTEyLTMxVDIzOjAwOjAwLjAwMFoiLCJfaWRfY29udHJhY3RvciI6IjIxYjIyMGEwLTQ0N2YtMTFlYy1hMTcxLTM5NDUyZGQ0NDNkZiIsIl9fdiI6MCwiaWF0IjoxNjM2ODExMjA1LCJleHAiOjE2MzY4MTIxMDV9.dmIGJd91gMrX1DALeVavHC6SsWJx_Mh48eVZe_SYh1w
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /080/v1/contractors:
+    get:
+      tags:
+        - General
+      summary: Get list of all Contractors
+      responses:
+        '201':
+          description: Created
+          headers:
+            Server:
+              schema:
+                type: string
+                example: FindCO
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Content-Length:
+              schema:
+                type: integer
+                example: '152'
+            Date:
+              schema:
+                type: string
+                example: Thu, 30 Dec 2021 11:16:42 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                - first_name: Polde
+                  last_name: Kovac
+                  company_name: Senzorbit D.O.O
+                - first_name: Roman
+                  last_name: Koman
+                  company_name: Petsrore D.O.2
+  /080/v1/user/edit:
+    post:
+      tags:
+        - General
+      summary: Edit User
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                first_name: Lojze
+                last_name: Pomagalo
+                email: test22
+                password: test
+                date_birth: '2021-01-01T23:00:00.000+00:00'
+                phone: '061312214'
+                street_address: Jurckova 215
+                city: Maribor
+                postal_code: '1200'
+                country: Slovenia
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: >-
+            jwt
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZEFwcGxpY2F0aW9uX3VzZXIiOnsidHlwZSI6IkJ1ZmZlciIsImRhdGEiOlsyNiwxMTIsOTEsMTA0LDEwNSw4MSwxNywyMzYsMTcxLDE2NCwyMjQsMTA1LDE0OSw1MywxMzMsOTBdfSwiZmlyc3RfbmFtZSI6IlJvbWFuIiwibGFzdF9uYW1lIjoiS29tYW4iLCJlbWFpbCI6ImluZm9Acm9tdW4uc2kiLCJwYXNzd29yZCI6IiQyYSQxMCRVUWFQLkpjRm5PT2pPQnFJcExXMEZlTkhYU1FiRWVuNXZnZjhXL0xrbVQ0aDVnQVVjTHBScSIsImRhdGVfYmlydGgiOiIyMDIxLTAxLTAyIiwicGhvbmUiOjMxMTEyNzc5LCJzdHJlZXRfYWRkcmVzcyI6Ikp1cmNrb3ZhIDIxNSIsImNpdHkiOiJNYXJpYm9yIiwiY291bnRyeSI6IlNsb3ZlbmlhIiwicG9zdGFsX2NvZGUiOjEyMDAsInJvbGUiOiJhZG1pbiIsImFwaV9rZXkiOm51bGwsImFwcGxpY2F0aW9uX3VzZXJjb2wiOm51bGwsImlhdCI6MTY0MDg1ODExNCwiZXhwIjoxNjQwODU5MDE0fQ.S5bCkBUuVKxBjqUtkRkPxm5I-4GQslZG2-jPJ1Kk_5U
+      responses:
+        '201':
+          description: Created
+          headers:
+            Server:
+              schema:
+                type: string
+                example: FindCO
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Content-Length:
+              schema:
+                type: integer
+                example: '58'
+            Date:
+              schema:
+                type: string
+                example: Thu, 30 Dec 2021 09:55:27 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                status: success
+                message: User updated successfully
+        '401':
+          description: Unauthorized
+          headers:
+            Server:
+              schema:
+                type: string
+                example: FindCO
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Content-Length:
+              schema:
+                type: integer
+                example: '57'
+            Date:
+              schema:
+                type: string
+                example: Thu, 30 Dec 2021 09:54:51 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                code: Unauthorized
+                message: The token has expired
+  /080/v1/user/delete:
+    delete:
+      tags:
+        - General
+      summary: Delete User
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: >-
+            jwt
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZEFwcGxpY2F0aW9uX3VzZXIiOnsidHlwZSI6IkJ1ZmZlciIsImRhdGEiOlsyNiwxMTIsOTEsMTA0LDEwNSw4MSwxNywyMzYsMTcxLDE2NCwyMjQsMTA1LDE0OSw1MywxMzMsOTBdfSwiZmlyc3RfbmFtZSI6IlJvbWFuIiwibGFzdF9uYW1lIjoiS29tYW4iLCJlbWFpbCI6ImluZm9Acm9tdW4uc2kiLCJwYXNzd29yZCI6IiQyYSQxMCRVUWFQLkpjRm5PT2pPQnFJcExXMEZlTkhYU1FiRWVuNXZnZjhXL0xrbVQ0aDVnQVVjTHBScSIsImRhdGVfYmlydGgiOiIyMDIxLTAxLTAyIiwicGhvbmUiOjMxMTEyNzc5LCJzdHJlZXRfYWRkcmVzcyI6Ikp1cmNrb3ZhIDIxNSIsImNpdHkiOiJNYXJpYm9yIiwiY291bnRyeSI6IlNsb3ZlbmlhIiwicG9zdGFsX2NvZGUiOjEyMDAsInJvbGUiOiJhZG1pbiIsImFwaV9rZXkiOm51bGwsImFwcGxpY2F0aW9uX3VzZXJjb2wiOm51bGwsImlhdCI6MTY0MDg1ODQ3NSwiZXhwIjoxNjQwODU5Mzc1fQ.d6I0qXZkuK8gj3GF3VMPnn_VVba8NpZ-izuCSyt09cA
+      responses:
+        '201':
+          description: Created
+          headers:
+            Server:
+              schema:
+                type: string
+                example: FindCO
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Content-Length:
+              schema:
+                type: integer
+                example: '54'
+            Date:
+              schema:
+                type: string
+                example: Thu, 30 Dec 2021 10:01:28 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                status: success
+                message: User has been deleted
+        '403':
+          description: Forbidden
+          headers:
+            Server:
+              schema:
+                type: string
+                example: FindCO
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Content-Length:
+              schema:
+                type: integer
+                example: '65'
+            Date:
+              schema:
+                type: string
+                example: Thu, 30 Dec 2021 10:16:10 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                status: error
+                message: Only admin or yourself can do this
+  /080/v1/company/add:
+    post:
+      tags:
+        - General
+      summary: Add Company
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                company_name: Senzorbit D.O.O
+                tax_number: '011231123123'
+                street_address: Partizanska 9
+                postal_code: '10000'
+                logo_image: test.jpg
+                region(location): Osrednja Slovenija
+                city: Ljubljana
+                zip: '1000'
+                country: Slovenia
+                email: info@sensorbit.si
+                phone: '031123123'
+                line_of_work: test
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: >-
+            jwt
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZEFwcGxpY2F0aW9uX3VzZXIiOnsidHlwZSI6IkJ1ZmZlciIsImRhdGEiOlsyMjQsNzYsMjUzLDE5OSwxMDUsOTYsMTcsMjM2LDE3MSwxNjQsMjI0LDEwNSwxNDksNTMsMTMzLDkwXX0sImZpcnN0X25hbWUiOiJQb2xkZSIsImxhc3RfbmFtZSI6IktvdmFjIiwiZW1haWwiOiJpbmZvQGtvdmFjLnNpIiwicGFzc3dvcmQiOiIkMmEkMTAkRndoeHowRUlRNmdoQTFhYmYwWnJKdUxTcDZtbm00SUxMY2lGWnAwaXVXekFTcWZMM0tkRmkiLCJkYXRlX2JpcnRoIjoiMjAyMS0wMS0wMiIsInBob25lIjozMTExMjc1NSwic3RyZWV0X2FkZHJlc3MiOiJKdXJja292YSAyMTUiLCJjaXR5IjoiTWFyaWJvciIsImNvdW50cnkiOiJTbG92ZW5pYSIsInBvc3RhbF9jb2RlIjoxMjAwLCJyb2xlIjoiY29udHJhY3RvciIsImFwaV9rZXkiOm51bGwsImFwcGxpY2F0aW9uX3VzZXJjb2wiOm51bGwsImlhdCI6MTY0MDg2MjU1NywiZXhwIjoxNjQwODYzNDU3fQ.ujP2_ZAxi_AxfkfO1dz-5bCctnD3mNpOZDhtoD5JDJs
+      responses:
+        '201':
+          description: Created
+          headers:
+            Server:
+              schema:
+                type: string
+                example: FindCO
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Content-Length:
+              schema:
+                type: integer
+                example: '55'
+            Date:
+              schema:
+                type: string
+                example: Thu, 30 Dec 2021 10:04:19 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                status: success
+                message: Company has been added
+        '401':
+          description: Unauthorized
+          headers:
+            Server:
+              schema:
+                type: string
+                example: FindCO
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Content-Length:
+              schema:
+                type: integer
+                example: '84'
+            Date:
+              schema:
+                type: string
+                example: Thu, 30 Dec 2021 10:03:38 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                code: InvalidCredentials
+                message: 'caused by JsonWebTokenError: invalid token'
+  /080/v1/company/edit:
+    post:
+      tags:
+        - General
+      summary: Update Company
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                company_name: Neo D.O.2
+                tax_number: '01123131231'
+                street_address: Partizanska 9
+                postal_code: '10000'
+                logo_image: test.jpg
+                region(location): Osrednja Slovenija
+                city: Ljubljana
+                zip: '1000'
+                country: Slovenia
+                email: info@test.si
+                phone: '031123123'
+                line_of_work: test
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: >-
+            jwt
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZEFwcGxpY2F0aW9uX3VzZXIiOnsidHlwZSI6IkJ1ZmZlciIsImRhdGEiOlsxNjAsOTAsNjIsNzQsMTA1LDg3LDE3LDIzNiwxNzEsMTY0LDIyNCwxMDUsMTQ5LDUzLDEzMyw5MF19LCJmaXJzdF9uYW1lIjoiUm9tYW4iLCJsYXN0X25hbWUiOiJLb21hbiIsImVtYWlsIjoiaW5mb0Byb211bi5zaSIsInBhc3N3b3JkIjoiJDJhJDEwJFBPcWhjTkFUbG9qTE53YmFZeFBiZXUvUldlZjg5WDQwWHhyanBxeFp1NWVDb2E3MEJtMnl1IiwiZGF0ZV9iaXJ0aCI6IjIwMjEtMDEtMDIiLCJwaG9uZSI6MzExMTI3NzksInN0cmVldF9hZGRyZXNzIjoiSnVyY2tvdmEgMjE1IiwiY2l0eSI6Ik1hcmlib3IiLCJjb3VudHJ5IjoiU2xvdmVuaWEiLCJwb3N0YWxfY29kZSI6MTIwMCwicm9sZSI6ImFkbWluIiwiYXBpX2tleSI6bnVsbCwiYXBwbGljYXRpb25fdXNlcmNvbCI6bnVsbCwiaWF0IjoxNjQwODU4NTc0LCJleHAiOjE2NDA4NTk0NzR9.KQymHIIqCiumS37mRi5R3ViHnnyyEPCAdaMBRa7OniA
+      responses:
+        '201':
+          description: Created
+          headers:
+            Server:
+              schema:
+                type: string
+                example: FindCO
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Content-Length:
+              schema:
+                type: integer
+                example: '61'
+            Date:
+              schema:
+                type: string
+                example: Thu, 30 Dec 2021 10:05:06 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                status: success
+                message: Company updated successfully
+  /080/v1/company/delete:
+    delete:
+      tags:
+        - General
+      summary: Delete Company
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+          example: >-
+            jwt
+            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZEFwcGxpY2F0aW9uX3VzZXIiOnsidHlwZSI6IkJ1ZmZlciIsImRhdGEiOlsxNzEsMjM5LDEzMywxNDAsMTAzLDY3LDE3LDIzNiwxODAsMTQ0LDIyNCwxMDUsMTQ5LDUzLDEzMyw5MF19LCJmaXJzdF9uYW1lIjoiUm9tYW4iLCJsYXN0X25hbWUiOiJLb21hbiIsImVtYWlsIjoiaW5mb0Byb211bi5zaSIsInBhc3N3b3JkIjoiJDJhJDEwJEh4M1QuMFhUeEUzaFVQbGdRV3hwcnVBdWFJQnpmaTNmcFBzNzB3bjB6eWpaL2wvS0t6cU9XIiwiZGF0ZV9iaXJ0aCI6IjIwMjEtMDEtMDIiLCJwaG9uZSI6MzExMTI3NzksInN0cmVldF9hZGRyZXNzIjoiSnVyY2tvdmEgMjE1IiwiY2l0eSI6Ik1hcmlib3IiLCJjb3VudHJ5IjoiU2xvdmVuaWEiLCJwb3N0YWxfY29kZSI6MTIwMCwicm9sZSI6ImFkbWluIiwiYXBpX2tleSI6bnVsbCwiYXBwbGljYXRpb25fdXNlcmNvbCI6bnVsbCwiaWF0IjoxNjQwNjMzMTYzLCJleHAiOjE2NDA2MzQwNjN9.tlnyXqODKSwl9H6dQgVk3y0wIlcutQov30x_YF1qddI
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /080/v1/contractors/e04cfdc7-6960-11ec-aba4-e0699535855a:
+    get:
+      tags:
+        - General
+      summary: Get info about specific contractor
+      responses:
+        '201':
+          description: Created
+          headers:
+            Server:
+              schema:
+                type: string
+                example: FindCO
+            Content-Type:
+              schema:
+                type: string
+                example: application/json
+            Content-Length:
+              schema:
+                type: integer
+                example: '303'
+            Date:
+              schema:
+                type: string
+                example: Thu, 30 Dec 2021 12:09:39 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                id: e04cfdc7-6960-11ec-aba4-e0699535855a
+                first_name: Polde
+                last_name: Kovac
+                street_address: Jurckova 215
+                city: Maribor
+                country: Slovenia
+                company:
+                  name: Senzorbit D.O.O
+                  city: Ljubljana
+                  region: Osrednja Slovenija
+                  country: Slovenia
+                  logo: test.jpg
+                  line_of_work: test

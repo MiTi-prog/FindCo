@@ -24,9 +24,10 @@
     "restify-jwt-community": "^1.1.20",
     "restify-plugins": "^1.6.0",
     "restify-swagger-jsdoc": "^3.2.4",
-    "sequelize": "^6.12.1",
+    "sequelize": "^6.12.2",
     "sequelize-auto": "^0.8.8",
-    "sequelize-automate": "^1.2.2"
+    "sequelize-automate": "^1.2.2",
+    "uuid-parse": "^1.1.0"
   },
   "devDependencies": {
     "jasmine-node": "*",
@@ -35,7 +36,8 @@
   "scripts": {
     "start": "nodemon server.js",
     "test": "node ./node_modules/jasmine-node/lib/jasmine-node/cli.js spec",
-    "DBTool": "node ./database/DBCompanyInsertFromWEB.js"
+    "DBTool": "node ./database/DBCompanyInsertFromWEB.js",
+    "testTool": "node ./database/test.js"
   },
   "engines": {
     "node": ">=0.10.x"

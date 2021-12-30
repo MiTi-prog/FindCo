@@ -13,7 +13,8 @@ exports.authenticate = (email, password) => {
             // Match Password
             bcrypt.compare(password, user.password, (err, isMatch) => {
                 if (err) throw err;
-                if (!isMatch) throw 'Password did not match';
+                if (!isMatch) reject("Password did not match");
+                    //throw 'Password did not match';
                 resolve(user);
             });
         } catch (err) {

@@ -1,7 +1,6 @@
 const errors = require('restify-errors');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const Sequelize = require('sequelize');
 const auth = require('../../middleware/auth');
 const config = require("../../config/default");
 const uuid = require('uuid-parse');
@@ -128,9 +127,78 @@ async function login (req, res, next) {
  *              last_name:
  *                  type: "string"
  */
-function GetAlllContractors(req, res, next)
+async function GetAlllContractors(req, res, next)
 {
     // find each user with role matching 'contractor', ***selecting the `first_name` and `last_name` fields*** (with -_id you exclude _id from returning to your browser
+    try {
+        const contractor = await main.sequilize.query('SELECT * FROM Application_user INNER JOIN company ON Application_user.idApplication_user = company.application_user_idApplication_user WHERE role=\'contractor\'', {
+            model: User,
+            mapToModel: true // pass true here if you have any mapped fields
+        });
+
+        if (contractor === null) {
+            res.status(404)
+            res.send({status: 'error', message: "No contractors exists"});
+        } else {
+            const mojster = [];
+            for (i = 0; i < contractor.length; i++) {
+                mojster[i] = {
+                    id: uuid.unparse(contractor[i].idApplication_user),
+                    first_name: contractor[i].first_name,
+                    last_name: contractor[i].last_name,
+                    company_name: contractor[i].dataValues.company_name
+                };
+            }
+            res.send(201, mojster);
+            next();
+        }
+    } catch (err) {
+        return next(new errors.InternalError(err.message));
+    }
+}
+
+//Restricted routes
+async function GetContractor(req, res, next)
+{
+    try {
+
+        const contractor = await User.findOne(
+            { where : {idApplication_user:Buffer.from(uuid.parse(req.params.id))},
+            include: [{
+                model: Company,
+                as: "companies",
+                required: true
+            }], raw: true});
+
+        if (contractor === null) {
+            res.status(404)
+            res.send({status: 'error', message: "No contractors exists"});
+        } else {
+            console.log(contractor);
+            const mojster = {
+                    id: uuid.unparse(contractor.idApplication_user),
+                    first_name: contractor.first_name,
+                    last_name: contractor.last_name,
+                    street_address: contractor.street_address,
+                    city: contractor.city,
+                    zip: contractor.zip,
+                    country: contractor.country,
+                    company: {
+                        name: contractor["companies.company_name"],
+                        city: contractor["companies.city"],
+                        region: contractor["companies.region(location)"],
+                        country: contractor["companies.country"],
+                        logo: contractor["companies.logo_image"],
+                        line_of_work: contractor["companies.line_of_work"],
+                    }
+                };
+            res.send(201, mojster);
+            next();
+        }
+    } catch (err) {
+        return next(new errors.InternalError(err.message));
+    }
+    /*
     User.findOne({where: { role: "contractor"}}, '-idApplication_user first_name last_name', function(err, doc) {
         if (err) {
             return next(
@@ -140,9 +208,9 @@ function GetAlllContractors(req, res, next)
         res.send(doc);
         next();
     });
+     */
 }
 
-//Restricted routes
 async function EditUser(req, res, next)
 {
     //Our request data can also be found in Json Web Token
@@ -352,6 +420,7 @@ async function authTest (req, res, next) {
         register:register,
         login:login,
         GetAlllContractors:GetAlllContractors,
+        GetContractor:GetContractor,
         EditUser:EditUser,
         DeleteUser:DeleteUser,
         CompanyAdd:CompanyAdd,

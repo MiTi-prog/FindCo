@@ -65,6 +65,7 @@ server.listen(config.server.port, () => {
     var initModels = require("./models/MySQL_models/init-models").initModels;
     var models =  initModels(sequelize);
     exports.models = models;
+    exports.sequilize = sequelize;
 
     sequelize.authenticate()
     .then(() => {

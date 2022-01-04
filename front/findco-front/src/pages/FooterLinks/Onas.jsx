@@ -1,14 +1,14 @@
 import React, { Fragment } from "react";
-import useScrollToTop from "../../hooks/useScrollToTop";
-
 import Button from "../../UI/Button/Button";
 
 import coverVID from "./../../assets/cover.mp4";
 import Hisa1 from "./../../assets/hisa1.jpg";
-import classes from "./LearnMore.module.scss";
 
-const LearnMoreText = () => {
-    useScrollToTop();
+import classes from "./FooterLinks.module.scss";
+
+// Univerzalen Class
+
+const OnasText = () => {
     return (
         <Fragment>
             <h1 className={classes.hero__content__title}>O Nas</h1>
@@ -29,7 +29,7 @@ const LearnMoreText = () => {
     );
 };
 
-const LearnMore = () => {
+const Onas = () => {
     return (
         <div className={classes.container}>
             <img
@@ -40,11 +40,11 @@ const LearnMore = () => {
 
             <div className={classes.hero}>
                 <div className={classes.hero__content}>
-                    <LearnMoreText/>
+                    <OnasText/>
                 </div>
             </div>
         </div>
     );
 };
 
-export default LearnMore;
+export default Onas;

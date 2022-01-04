@@ -1,17 +1,17 @@
 import React, { Fragment } from "react";
-import useScrollToTop from "../../hooks/useScrollToTop";
-
 import Button from "../../UI/Button/Button";
 
 import coverVID from "./../../assets/cover.mp4";
 import Hisa1 from "./../../assets/hisa1.jpg";
-import classes from "./LearnMore.module.scss";
 
-const LearnMoreText = () => {
-    useScrollToTop();
+import classes from "./FooterLinks.module.scss";
+
+// Univerzalen Class
+
+const InformacijeText = () => {
     return (
         <Fragment>
-            <h1 className={classes.hero__content__title}>O Nas</h1>
+            <h1 className={classes.hero__content__title}>Informacije</h1>
             <span className={classes.hero__content__tagline}>
                 NAJ VAM DO TEGA POMAGAMO
             </span>
@@ -29,7 +29,7 @@ const LearnMoreText = () => {
     );
 };
 
-const LearnMore = () => {
+const Informacije = () => {
     return (
         <div className={classes.container}>
             <img
@@ -40,11 +40,11 @@ const LearnMore = () => {
 
             <div className={classes.hero}>
                 <div className={classes.hero__content}>
-                    <LearnMoreText/>
+                    <InformacijeText/>
                 </div>
             </div>
         </div>
     );
 };
 
-export default LearnMore;
+export default Informacije;

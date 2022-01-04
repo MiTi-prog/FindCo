@@ -44,20 +44,37 @@ const Footer = () => {
                         <Button>Prijava</Button>
                     </div>
                 </div>
+
                 <div className={classes.footer__content}>
-                    {footerColumns.map(({ id, headline, links }) => (
-                        <div className={classes.footer__content__col} key={id}>
-                            <div className={classes.footer__content__col__headline}>{headline}</div>
-                            <ul className={classes.footer__content__col__links}>
-                                {links.map((link, index) => (
-                                    <li key={index + 1}>
-                                        <a href="/">{link}</a>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    ))}
-                </div>
+                    <div className={classes.footer__content__col} key={1}>
+                        <div className={classes.footer__content__col__headline}>O nas</div>
+                        <ul className={classes.footer__content__col__links}>
+                                 <li> <a href="Onas">O nas</a> </li>
+                                 <li> <a href="Ekipa">Ekipa</a> </li>
+                                 <li> <a href="NasaZgodba">Naša Zgodba</a> </li>
+                                   
+                        </ul>
+                    </div>
+                    <div className={classes.footer__content__col} key={2}>
+                        <div className={classes.footer__content__col__headline}>Kontakti in informacije</div>
+                        <ul className={classes.footer__content__col__links}>
+                                 <li> <a href="Kontakt">Kontakt</a> </li>
+                                 <li> <a href="Informacije">Informacije</a> </li>
+                                 <li> <a href="Vprasanja">Vprašanja</a> </li>
+                                   
+                        </ul>
+                    </div>
+                    <div className={classes.footer__content__col} key={1}>
+                        <div className={classes.footer__content__col__headline}>Ostalo</div>
+                        <ul className={classes.footer__content__col__links}>
+                                 <li> <a href="PolitikaZasebnosti">Politika zasebnosti</a> </li>
+                                 <li> <a href="UpravljanjeOsebPodatkov">Upravljanje osebnih podatkov</a> </li>
+                                 <li> <a href="SplosniPogojiPoslovanja">Splošni pogoji poslovanja</a> </li>
+                                   
+                        </ul>
+                    </div>
+                </div>       
+
                 <div className={classes.footer__base}>
                     <LogoZNapisom />
                     <span className={classes.footer__base__year}>

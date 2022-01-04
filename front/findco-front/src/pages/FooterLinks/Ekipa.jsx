@@ -1,17 +1,16 @@
 import React, { Fragment } from "react";
-import useScrollToTop from "../../hooks/useScrollToTop";
-
 import Button from "../../UI/Button/Button";
 
 import coverVID from "./../../assets/cover.mp4";
-import Hisa1 from "./../../assets/hisa1.jpg";
-import classes from "./LearnMore.module.scss";
 
-const LearnMoreText = () => {
-    useScrollToTop();
+import classes from "./FooterLinks.module.scss";
+
+// Univerzalen Class
+
+const EkipaText = () => {
     return (
         <Fragment>
-            <h1 className={classes.hero__content__title}>O Nas</h1>
+            <h1 className={classes.hero__content__title}>Ekipa</h1>
             <span className={classes.hero__content__tagline}>
                 NAJ VAM DO TEGA POMAGAMO
             </span>
@@ -29,22 +28,24 @@ const LearnMoreText = () => {
     );
 };
 
-const LearnMore = () => {
+const Ekipa = () => {
     return (
         <div className={classes.container}>
-            <img
-                src={Hisa1}
-                alt={"Hisa1"}
-                className={classes.photo}
-            ></img>
-
+            <video
+                autoPlay={true}
+                muted
+                loop
+                className={classes.video}
+                id={"video"}
+                src={coverVID}
+            ></video>
             <div className={classes.hero}>
                 <div className={classes.hero__content}>
-                    <LearnMoreText/>
+                    <EkipaText/>
                 </div>
             </div>
         </div>
     );
 };
 
-export default LearnMore;
+export default Ekipa;

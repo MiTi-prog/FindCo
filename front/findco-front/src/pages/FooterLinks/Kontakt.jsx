@@ -19,8 +19,10 @@ const KontaktText = () => {
                 NAJ VAM DO TEGA POMAGAMO
             </span>
             <p className={classes.hero__content__description}>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere beatae itaque ea
-                ducimus, mollitia voluptate laudantium.
+            Lorem ipsum odor amet, consectetuer adipiscing elit. Ac purus in massa egestas mollis varius;
+            dignissim elementum. Mollis tincidunt mattis hendrerit dolor eros enim, nisi ligula ornare.
+            Hendrerit parturient habitant pharetra rutrum gravida porttitor eros feugiat. Mollis elit
+            sodales taciti duis praesent id. Consequat urna vitae morbi nunc congue
             </p>
         </Fragment>
     );

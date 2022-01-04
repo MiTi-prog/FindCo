@@ -13,14 +13,21 @@ import useScrollToTop from "../../hooks/useScrollToTop";
 const EkipaText = () => {
     return (
         <Fragment>
-            <h1 className={classes.hero__content__title}>Ekipa</h1>
+            <h1 className={classes.hero__content__title}>Ekipa </h1>
+            <h1 className={classes.hero__content__title}> </h1>
+            <h1 className={classes.hero__content__title}> </h1>
             <span className={classes.hero__content__tagline}>
-                NAJ VAM DO TEGA POMAGAMO
+                Mitja Šepec
             </span>
-            <p className={classes.hero__content__description}>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere beatae itaque ea
-                ducimus, mollitia voluptate laudantium.
-            </p>
+            <span className={classes.hero__content__tagline}>
+                Tim Rus
+            </span>
+            <span className={classes.hero__content__tagline}>
+                Mitja Kocjančič
+            </span>
+            <span className={classes.hero__content__tagline}>
+                Simon Javeršek
+            </span>
         </Fragment>
     );
 };

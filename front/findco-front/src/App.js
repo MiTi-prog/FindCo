@@ -6,6 +6,8 @@ import SearchPodjetja from "./pages/SearchPodjetja/SearchPodjetja";
 import Home from "./pages/Home/Home";
 import LearnMore from "./pages/LearnMore/LearnMore";
 import FavPodjetja from "./pages/FavPodjetja/FavPodjetjaPage";
+import Login from "./pages/Login/Login";
+import Register from "./components/Register/Register";
 
 import Onas from "./pages/FooterLinks/Onas";
 import Ekipa from "./pages/FooterLinks/Ekipa";
@@ -20,9 +22,14 @@ import Vprasanja from "./pages/FooterLinks/Vprasanja";
 
 function App() {
     return (
-        <Fragment>
-            <Header/>
+        <>
             <Switch>
+                <Route path="/prijava">
+                    <Login />
+                </Route>
+                <Route path="/registracija">
+                    <Register />
+                </Route>
                 <Route path="/FavPodjetja">
                     <FavPodjetja />
                 </Route>
@@ -64,8 +71,7 @@ function App() {
                 </Route>
 
             </Switch>
-            <Footer />
-        </Fragment>
+        </>
     );
 }
 

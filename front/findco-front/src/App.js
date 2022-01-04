@@ -6,12 +6,19 @@ import SearchPodjetja from "./pages/SearchPodjetja/SearchPodjetja";
 import Home from "./pages/Home/Home";
 import LearnMore from "./pages/LearnMore/LearnMore";
 import FavPodjetja from "./pages/FavPodjetja/FavPodjetjaPage";
+import Login from "./pages/Login/Login";
+import Register from "./components/Register/Register";
 
 function App() {
     return (
-        <Fragment>
-            <Header/>
+        <>
             <Switch>
+                <Route path="/prijava">
+                    <Login />
+                </Route>
+                <Route path="/registracija">
+                    <Register />
+                </Route>
                 <Route path="/FavPodjetja">
                     <FavPodjetja />
                 </Route>
@@ -25,8 +32,7 @@ function App() {
                     <Home />
                 </Route>
             </Switch>
-            <Footer />
-        </Fragment>
+        </>
     );
 }
 

@@ -7,7 +7,7 @@ module.exports = {
       version: '0.0.1'
     },
     server: {
-      port: process.env.API_PORT || 8080
+      port: process.env.PORT || 8080
     },
 	db: {
 		uri: process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/api',

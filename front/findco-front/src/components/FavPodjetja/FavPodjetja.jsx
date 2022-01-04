@@ -64,7 +64,7 @@ const FavPodjetja = ({ page }) => {
 
                     {!page && (
                         <div className={classes.favPodjetje__content__viewmore}>
-                            <Link to="/FavPodjetja">
+                            <Link to="/priljubljena-podjetja">
                                 view more <BsArrowRight />
                             </Link>
                         </div>

@@ -19,8 +19,8 @@ const HomePageContent = () => {
                 ducimus, mollitia voluptate laudantium.
             </p>
             <div className={classes.hero__content__cta}>
-                <Button to="/booknow">Search</Button>
-                <Button to="/learnmore" outline>
+                <Button to="/">Search</Button>
+                <Button to="/learn-more" outline>
                     Learn More
                 </Button>
             </div>

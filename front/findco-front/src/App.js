@@ -1,7 +1,7 @@
-import { Fragment } from "react";
+//import { Fragment } from "react";
 import { Route, Switch } from "react-router";
-import Footer from "./components/Footer/Footer";
-import Header from "./components/Header/Header";
+//import Footer from "./components/Footer/Footer";
+//import Header from "./components/Header/Header";
 import SearchPodjetja from "./pages/SearchPodjetja/SearchPodjetja";
 import Home from "./pages/Home/Home";
 import LearnMore from "./pages/LearnMore/LearnMore";
@@ -30,43 +30,43 @@ function App() {
                 <Route path="/registracija">
                     <Register />
                 </Route>
-                <Route path="/FavPodjetja">
+                <Route path="/priljubljena-podjetja">
                     <FavPodjetja />
                 </Route>
-                <Route path="/SearchPodjetja">
+                <Route path="/isci-podjetja">
                     <SearchPodjetja />
                 </Route>
-                <Route path="/LearnMore">
+                <Route path="/learn-more">
                     <LearnMore />
                 </Route>
                 <Route exact path="/">
                     <Home />
                 </Route>
-                <Route exact path="/Onas">
+                <Route exact path="/o-nas">
                     <Onas />
                 </Route>
-                <Route exact path="/Ekipa">
+                <Route exact path="/ekipa">
                     <Ekipa />
                 </Route>
-                <Route exact path="/Informacije">
+                <Route exact path="/informacije">
                     <Informacije />
                 </Route>
-                <Route exact path="/Kontakt">
+                <Route exact path="/kontakt">
                     <Kontakt />
                 </Route>
-                <Route exact path="/NasaZgodba">
+                <Route exact path="/nasa-zgodba">
                     <NasaZgodba />
                 </Route>
-                <Route exact path="/PolitikaZasebnosti">
+                <Route exact path="/politika-zasebnosti">
                     <PolitikaZasebnosti />
                 </Route>
-                <Route exact path="/SplosniPogojiPoslovanja">
+                <Route exact path="/splosni-pogoji-poslovanja">
                     <SplosniPogojiPoslovanja />
                 </Route>
-                <Route exact path="/UpravljanjeOsebPodatkov">
+                <Route exact path="/upravljanje-osebnih-podatkov">
                     <UpravljanjeOsebPodatkov />
                 </Route>
-                <Route exact path="/Vprasanja">
+                <Route exact path="/vprasanja">
                     <Vprasanja />
                 </Route>
 

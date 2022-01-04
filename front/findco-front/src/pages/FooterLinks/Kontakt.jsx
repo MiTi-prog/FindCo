@@ -2,7 +2,10 @@ import React, { Fragment } from "react";
 import Button from "../../UI/Button/Button";
 
 import coverVID from "./../../assets/cover.mp4";
-import Hisa1 from "./../../assets/hisa1.jpg";
+import Pise from "./../../assets/piseMajster.jpg";
+
+import Header from "../../components/Header/Header";
+import Footer from "../../components/Footer/Footer";
 
 import classes from "./FooterLinks.module.scss";
 
@@ -19,22 +22,18 @@ const KontaktText = () => {
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere beatae itaque ea
                 ducimus, mollitia voluptate laudantium.
             </p>
-            <div className={classes.hero__content__cta}>
-                <Button to="/booknow">Search</Button>
-                <Button to="/learnmore" outline>
-                    Learn More
-                </Button>
-            </div>
         </Fragment>
     );
 };
 
 const Kontakt = () => {
     return (
+        <>
+        <Header />
         <div className={classes.container}>
             <img
-                src={Hisa1}
-                alt={"Hisa1"}
+                src={Pise}
+                alt={"kontk"}
                 className={classes.photo}
             ></img>
 
@@ -44,6 +43,8 @@ const Kontakt = () => {
                 </div>
             </div>
         </div>
+        <Footer />
+        </>
     );
 };
 

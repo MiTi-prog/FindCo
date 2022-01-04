@@ -41,7 +41,7 @@ const Footer = () => {
                     <span>Odjva kadarkoli.</span>
                     <div className={classes.footer__newsletter__form}>
                         <input className={classes.input} type="email" placeholder=" Vaš Email" />
-                        <Button>Prijava</Button>
+                        <Button to="/learn-more">Prijava</Button>
                     </div>
                 </div>
 
@@ -49,27 +49,27 @@ const Footer = () => {
                     <div className={classes.footer__content__col} key={1}>
                         <div className={classes.footer__content__col__headline}>O nas</div>
                         <ul className={classes.footer__content__col__links}>
-                                 <li> <a href="Onas">O nas</a> </li>
-                                 <li> <a href="Ekipa">Ekipa</a> </li>
-                                 <li> <a href="NasaZgodba">Naša Zgodba</a> </li>
+                                 <li> <a href="o-nas">O nas</a> </li>
+                                 <li> <a href="ekipa">Ekipa</a> </li>
+                                 <li> <a href="nasa-zgodba">Naša Zgodba</a> </li>
                                    
                         </ul>
                     </div>
                     <div className={classes.footer__content__col} key={2}>
                         <div className={classes.footer__content__col__headline}>Kontakti in informacije</div>
                         <ul className={classes.footer__content__col__links}>
-                                 <li> <a href="Kontakt">Kontakt</a> </li>
-                                 <li> <a href="Informacije">Informacije</a> </li>
-                                 <li> <a href="Vprasanja">Vprašanja</a> </li>
+                                 <li> <a href="kontakt">Kontakt</a> </li>
+                                 <li> <a href="informacije">Informacije</a> </li>
+                                 <li> <a href="vprasanja">Vprašanja</a> </li>
                                    
                         </ul>
                     </div>
                     <div className={classes.footer__content__col} key={1}>
                         <div className={classes.footer__content__col__headline}>Ostalo</div>
                         <ul className={classes.footer__content__col__links}>
-                                 <li> <a href="PolitikaZasebnosti">Politika zasebnosti</a> </li>
-                                 <li> <a href="UpravljanjeOsebPodatkov">Upravljanje osebnih podatkov</a> </li>
-                                 <li> <a href="SplosniPogojiPoslovanja">Splošni pogoji poslovanja</a> </li>
+                                 <li> <a href="politika-zasebnosti">Politika zasebnosti</a> </li>
+                                 <li> <a href="upravljanje-osebnih-podatkov">Upravljanje osebnih podatkov</a> </li>
+                                 <li> <a href="splosni-pogoji-poslovanja">Splošni pogoji poslovanja</a> </li>
                                    
                         </ul>
                     </div>

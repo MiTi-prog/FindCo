@@ -4,14 +4,17 @@ import useScrollToTop from "../../hooks/useScrollToTop";
 import Button from "../../UI/Button/Button";
 
 import coverVID from "./../../assets/cover.mp4";
-import Hisa1 from "./../../assets/hisa1.jpg";
+import Learn from "./../../assets/learnmore.mp4";
 import classes from "./LearnMore.module.scss";
+
+import Header from "../../components/Header/Header";
+import Footer from "../../components/Footer/Footer";
 
 const LearnMoreText = () => {
     useScrollToTop();
     return (
         <Fragment>
-            <h1 className={classes.hero__content__title}>O Nas</h1>
+            <h1 className={classes.hero__content__title}>pomembne informacije</h1>
             <span className={classes.hero__content__tagline}>
                 NAJ VAM DO TEGA POMAGAMO
             </span>
@@ -19,24 +22,23 @@ const LearnMoreText = () => {
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere beatae itaque ea
                 ducimus, mollitia voluptate laudantium.
             </p>
-            <div className={classes.hero__content__cta}>
-                <Button to="/booknow">Search</Button>
-                <Button to="/learnmore" outline>
-                    Learn More
-                </Button>
-            </div>
         </Fragment>
     );
 };
 
 const LearnMore = () => {
     return (
+        <>
+        <Header />
         <div className={classes.container}>
-            <img
-                src={Hisa1}
-                alt={"Hisa1"}
-                className={classes.photo}
-            ></img>
+            <video
+                autoPlay={true}
+                muted
+                loop
+                className={classes.video}
+                id={"video"}
+                src={Learn}
+            ></video>
 
             <div className={classes.hero}>
                 <div className={classes.hero__content}>
@@ -44,6 +46,8 @@ const LearnMore = () => {
                 </div>
             </div>
         </div>
+        <Footer/>
+        </>
     );
 };
 

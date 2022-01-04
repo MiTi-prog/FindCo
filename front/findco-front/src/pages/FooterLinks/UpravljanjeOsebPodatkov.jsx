@@ -7,6 +7,9 @@ import Hisa1 from "./../../assets/hisa1.jpg";
 
 import classes from "./FooterLinks.module.scss";
 
+import Header from "../../components/Header/Header";
+import Footer from "../../components/Footer/Footer";
+
 // Univerzalen Class
 
 const UpravljanjeOsebPodatkovText = () => {
@@ -20,18 +23,14 @@ const UpravljanjeOsebPodatkovText = () => {
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere beatae itaque ea
                 ducimus, mollitia voluptate laudantium.
             </p>
-            <div className={classes.hero__content__cta}>
-                <Button to="/booknow">Search</Button>
-                <Button to="/learnmore" outline>
-                    Learn More
-                </Button>
-            </div>
         </Fragment>
     );
 };
 
 const UpravljanjeOsebPodatkov = () => {
     return (
+        <>
+        <Header />
         <div className={classes.container}>
             <img
                 src={Hisa1}
@@ -45,6 +44,8 @@ const UpravljanjeOsebPodatkov = () => {
                 </div>
             </div>
         </div>
+        <Footer />
+        </>
     );
 };
 

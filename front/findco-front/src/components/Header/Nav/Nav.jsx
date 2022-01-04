@@ -10,24 +10,21 @@ const Nav = ({ isMenu, menuToggle }) => {
         <nav className={isMenu ? classes.menu__nav : classes.nav}>
             <ul>
                 <li onClick={menuToggle}>
-                    <Link to="/SearchPodjetja"><IoSearch/>{" "}Išči Izvajalca</Link>
+                    <Link to="/isci-podjetja"><IoSearch/>{" "}Išči Izvajalca</Link>
                 </li>
                 <li onClick={menuToggle}>
-                    <Link to="/FavPodjetja"><IoHeartCircle/>{" "}Priljubljeni Izvajalci</Link>
+                    <Link to="/priljubljena-podjetja"><IoHeartCircle/>{" "}Priljubljeni Izvajalci</Link>
                 </li>
                 <li onClick={menuToggle}>
-                    <Link to="/learnmore">Pomembne Informacije</Link>
+                    <Link to="/learn-more">Pomembne Informacije</Link>
                 </li>
             </ul>
             <div className={classes.menu__nav__cta}>
-            <Button to="/booknow" oranzna className={classes.booknow} onClick={menuToggle}>
+            <Button to="/" oranzna className={classes.booknow} onClick={menuToggle}>
                 Povpraševanje
             </Button>
-            <Button to="/booknow" outline className={classes.booknow} onClick={menuToggle}>
+            <Button to="/"  className={classes.booknow} onClick={menuToggle}>
                 Prijava
-            </Button>
-            <Button to="/booknow" className={classes.booknow} onClick={menuToggle}> 
-                Podjetja 
             </Button>
             </div>
         </nav>

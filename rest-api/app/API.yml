@@ -6,9 +6,9 @@ info:
     users to find their handy-man
   version: 1.0.0
 servers:
-  - url: localhost://
+  - url: https://find-co.herokuapp.com
 paths:
-  /080/v1/register:
+  /api/v1/register:
     post:
       tags:
         - General
@@ -105,7 +105,7 @@ paths:
               example:
                 status: error
                 message: User already exists
-  /080/v1/login:
+  /api/v1/login:
     post:
       tags:
         - General
@@ -159,30 +159,7 @@ paths:
               example:
                 code: Unauthorized
                 message: Password did not match
-  /080/v1/test:
-    get:
-      tags:
-        - General
-      summary: Test Authenticated resource
-      parameters:
-        - name: Content-Type
-          in: header
-          schema:
-            type: string
-          example: application/json
-        - name: Authorization
-          in: header
-          schema:
-            type: string
-          example: >-
-            jwt
-            eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MThmYjJhN2I4M2FiNjIyY2Y0YzJlNGIiLCJmaXJzdF9uYW1lIjoiSmFuZXoyIiwibGFzdF9uYW1lIjoiTm92YWsiLCJlbWFpbCI6InRlc3RAdGVzdC5jb20iLCJwYXNzd29yZCI6IiQyYSQxMCRXZk1hQThha0R2LmEzWTAwZnhvenkuWmV0MTAxejZCeS43aXRieDJBT2JXNEVLcDBwUTA1TyIsImRhdGVfYmlydGgiOiIyMDIwLTEyLTMxVDIzOjAwOjAwLjAwMFoiLCJfaWRfY29udHJhY3RvciI6IjIxYjIyMGEwLTQ0N2YtMTFlYy1hMTcxLTM5NDUyZGQ0NDNkZiIsIl9fdiI6MCwiaWF0IjoxNjM2ODExMjA1LCJleHAiOjE2MzY4MTIxMDV9.dmIGJd91gMrX1DALeVavHC6SsWJx_Mh48eVZe_SYh1w
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /080/v1/contractors:
+  /api/v1/contractors:
     get:
       tags:
         - General
@@ -226,7 +203,7 @@ paths:
                 - first_name: Roman
                   last_name: Koman
                   company_name: Petsrore D.O.2
-  /080/v1/user/edit:
+  /api/v1/user/edit:
     post:
       tags:
         - General
@@ -329,7 +306,7 @@ paths:
               example:
                 code: Unauthorized
                 message: The token has expired
-  /080/v1/user/delete:
+  /api/v1/user/delete:
     delete:
       tags:
         - General
@@ -416,7 +393,7 @@ paths:
               example:
                 status: error
                 message: Only admin or yourself can do this
-  /080/v1/company/add:
+  /api/v1/company/add:
     post:
       tags:
         - General
@@ -521,7 +498,7 @@ paths:
               example:
                 code: InvalidCredentials
                 message: 'caused by JsonWebTokenError: invalid token'
-  /080/v1/company/edit:
+  /api/v1/company/edit:
     post:
       tags:
         - General
@@ -592,7 +569,7 @@ paths:
               example:
                 status: success
                 message: Company updated successfully
-  /080/v1/company/delete:
+  /api/v1/company/delete:
     delete:
       tags:
         - General
@@ -615,7 +592,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /080/v1/contractors/e04cfdc7-6960-11ec-aba4-e0699535855a:
+  /api/v1/contractors/e04cfdc7-6960-11ec-aba4-e0699535855a:
     get:
       tags:
         - General

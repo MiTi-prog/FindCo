@@ -131,7 +131,7 @@ async function GetAlllContractors(req, res, next)
 {
     // find each user with role matching 'contractor', ***selecting the `first_name` and `last_name` fields*** (with -_id you exclude _id from returning to your browser
     try {
-        const contractor = await main.sequilize.query('SELECT * FROM Application_user INNER JOIN company ON Application_user.idApplication_user = company.application_user_idApplication_user WHERE role=\'contractor\'', {
+        const contractor = await main.sequilize.query('SELECT * FROM application_user INNER JOIN company ON application_user.idApplication_user = company.application_user_idApplication_user WHERE role=\'contractor\'', {
             model: User,
             mapToModel: true // pass true here if you have any mapped fields
         });

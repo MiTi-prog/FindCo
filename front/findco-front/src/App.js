@@ -16,14 +16,11 @@ import PolitikaZasebnosti from "./pages/FooterLinks/PolitikaZasebnosti";
 import SplosniPogojiPoslovanja from "./pages/FooterLinks/SplosniPogojiPoslovanja";
 import UpravljanjeOsebPodatkov from "./pages/FooterLinks/UpravljanjeOsebPodatkov";
 import Vprasanja from "./pages/FooterLinks/Vprasanja";
-<<<<<<< HEAD
-import Profile from "./pages/Profile/Profile";
-=======
+import Profile from "./pages/Profile/ProfilePage";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import { useContext } from "react";
 import { AuthContext } from "./context/AuthContext";
->>>>>>> f995ac40b47c14505aecc0a931f3ad746fe6dfaa
 
 
 function App() {
@@ -38,6 +35,9 @@ function App() {
                 </Route>
                 <Route path="/registracija">
                 { user ? <Redirect to="/" /> : <Register /> }
+                </Route>
+                <Route path="/moj-profil">
+                { user ? <Profile /> : <Login /> }
                 </Route>
                 <Route path="/priljubljena-podjetja">
                     <FavPodjetja />
@@ -81,10 +81,6 @@ function App() {
                 <Route exact path="/vprasanja">
                     <Vprasanja />
                 </Route>
-                <Route exact path="/profile">
-                    <Profile />
-                </Route>
-                
 
             </Switch>
         </>

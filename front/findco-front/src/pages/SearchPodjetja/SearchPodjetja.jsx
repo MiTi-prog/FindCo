@@ -9,7 +9,7 @@ const SearchPodjetja = () => {
     return (
         <>
             <Header />
-            <Companies />
+                <Companies />
             <Footer />
         </>
     );

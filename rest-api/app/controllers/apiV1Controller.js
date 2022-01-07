@@ -25,10 +25,8 @@ function register(req, res, next) {
                 next();
             } catch (err) {
                 if (err.name === 'SequelizeValidationError') {
-                    return res.status(400).json({
-                        stuatus: "error",
-                        message: err.errors.map(e => e.message)
-                    })
+                    res.status(403)
+                    res.send({ status: 'error', message: err.errors.map(e => e.message)});
                 } else if (err.name === 'SequelizeUniqueConstraintError') {
                     res.status(403)
                     res.send({ status: 'error', message: "User already exists"});
@@ -230,10 +228,8 @@ async function EditUser(req, res, next)
             next();
         } catch (err) {
             if (err.name === 'SequelizeValidationError') {
-                return res.status(400).json({
-                    status: "error",
-                    message: err.errors.map(e => e.message)
-                })
+                res.status(403)
+                res.send({ status: 'error', message: err.errors.map(e => e.message)});
             } else if (err.name === 'SequelizeUniqueConstraintError') {
                 res.status(403)
                 res.send({status: 'error', message: "User already exists"});
@@ -263,10 +259,8 @@ async function DeleteUser(req, res, next)
             next();
         } catch (err) {
             if (err.name === 'SequelizeValidationError') {
-                return res.status(400).json({
-                    status: "error",
-                    message: err.errors.map(e => e.message)
-                })
+                res.status(403)
+                res.send({ status: 'error', message: err.errors.map(e => e.message)});
             } else if (err.name === 'SequelizeUniqueConstraintError') {
                 res.status(403)
                 res.send({status: 'error', message: "User already exists"});
@@ -309,10 +303,8 @@ async function CompanyAdd(req, res, next)
             next();
         } catch (err) {
             if (err.name === 'SequelizeValidationError') {
-                return res.status(400).json({
-                    status: "error",
-                    message: err.errors.map(e => e.message)
-                })
+                res.status(403)
+                res.send({ status: 'error', message: err.errors.map(e => e.message)});
             } else if (err.name === 'SequelizeUniqueConstraintError') {
                 res.status(403)
                 res.send({status: 'error', message: "Company already exists"});
@@ -345,10 +337,8 @@ async function CompanyEdit(req, res, next)
             next();
         } catch (err) {
             if (err.name === 'SequelizeValidationError') {
-                return res.status(400).json({
-                    status: "error",
-                    message: err.errors.map(e => e.message)
-                })
+                res.status(403)
+                res.send({ status: 'error', message: err.errors.map(e => e.message)});
             } else if (err.name === 'SequelizeUniqueConstraintError') {
                 res.status(403)
                 res.send({status: 'error', message: "Company already exists"});
@@ -378,10 +368,8 @@ async function CompanyDelete(req, res, next)
             next();
         } catch (err) {
             if (err.name === 'SequelizeValidationError') {
-                return res.status(400).json({
-                    status: "error",
-                    message: err.errors.map(e => e.message)
-                })
+                res.status(403)
+                res.send({ status: 'error', message: err.errors.map(e => e.message)});
             } else if (err.name === 'SequelizeUniqueConstraintError') {
                 res.status(403)
                 res.send({status: 'error', message: "Company already exists"});

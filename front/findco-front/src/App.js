@@ -36,7 +36,7 @@ function App() {
                 <Route path="/registracija">
                 { user ? <Redirect to="/" /> : <Register /> }
                 </Route>
-                <Route path="/moj-profil">
+                <Route path="/moj-racun">
                 { user ? <Profile /> : <Login /> }
                 </Route>
                 <Route path="/priljubljena-podjetja">

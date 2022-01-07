@@ -18,6 +18,7 @@ import PolitikaZasebnosti from "./pages/FooterLinks/PolitikaZasebnosti";
 import SplosniPogojiPoslovanja from "./pages/FooterLinks/SplosniPogojiPoslovanja";
 import UpravljanjeOsebPodatkov from "./pages/FooterLinks/UpravljanjeOsebPodatkov";
 import Vprasanja from "./pages/FooterLinks/Vprasanja";
+import Profile from "./pages/Profile/Profile";
 
 
 function App() {
@@ -69,6 +70,10 @@ function App() {
                 <Route exact path="/vprasanja">
                     <Vprasanja />
                 </Route>
+                <Route exact path="/profile">
+                    <Profile />
+                </Route>
+                
 
             </Switch>
         </>

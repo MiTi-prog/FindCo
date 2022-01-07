@@ -1,14 +1,12 @@
 //import { Fragment } from "react";
-import { Route, Switch } from "react-router";
+import { Route, Switch, Redirect } from "react-router";
 //import Footer from "./components/Footer/Footer";
 //import Header from "./components/Header/Header";
 import SearchPodjetja from "./pages/SearchPodjetja/SearchPodjetja";
 import Home from "./pages/Home/Home";
 import LearnMore from "./pages/LearnMore/LearnMore";
 import FavPodjetja from "./pages/FavPodjetja/FavPodjetjaPage";
-import Login from "./pages/Login/Login";
-import Register from "./components/Register/Register";
-
+import Companies from "./components/Companies/Companies";
 import Onas from "./pages/FooterLinks/Onas";
 import Ekipa from "./pages/FooterLinks/Ekipa";
 import Informacije from "./pages/FooterLinks/Informacije";
@@ -18,20 +16,30 @@ import PolitikaZasebnosti from "./pages/FooterLinks/PolitikaZasebnosti";
 import SplosniPogojiPoslovanja from "./pages/FooterLinks/SplosniPogojiPoslovanja";
 import UpravljanjeOsebPodatkov from "./pages/FooterLinks/UpravljanjeOsebPodatkov";
 import Vprasanja from "./pages/FooterLinks/Vprasanja";
+import Login from "./pages/Login/Login";
+import Register from "./pages/Register/Register";
+import { useContext } from "react";
+import { AuthContext } from "./context/AuthContext";
 
 
 function App() {
+
+    const { user } = useContext(AuthContext);
+
     return (
         <>
             <Switch>
                 <Route path="/prijava">
-                    <Login />
+                { user ? <Redirect to="/" /> : <Login /> }
                 </Route>
                 <Route path="/registracija">
-                    <Register />
+                { user ? <Redirect to="/" /> : <Register /> }
                 </Route>
                 <Route path="/priljubljena-podjetja">
                     <FavPodjetja />
+                </Route>
+                <Route path="/isci-podjetja">
+                    <Companies />
                 </Route>
                 <Route path="/isci-podjetja">
                     <SearchPodjetja />

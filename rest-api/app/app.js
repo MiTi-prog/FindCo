@@ -8,6 +8,7 @@ const restifyPlugins = require('restify-plugins');
 const swagger = require('restify-swagger-jsdoc'); //For documentation
 const Sequelize = require('sequelize');
 const cors = require('cors');
+const bodyParser = require("body-parser");
 
 /**
   * Initialize Server
@@ -41,7 +42,9 @@ swagger.createSwaggerPage({
   */
 server.use(restify.plugins.acceptParser(server.acceptable));
 server.use(restify.plugins.queryParser(server.acceptable));
-server.use(restify.plugins.bodyParser(server.acceptable));
+//server.use(restify.plugins.bodyParser(server.acceptable));
+server.use(bodyParser.json()) // for parsing application/json
+server.use(bodyParser.urlencoded({ extended: true }))
 server.use(cors()); //Don't Forget CORS if you want to write client app in Javascript
 
 /**

@@ -7,6 +7,7 @@ const mongoose = require('mongoose');
 const restifyPlugins = require('restify-plugins');
 const swagger = require('restify-swagger-jsdoc'); //For documentation
 const Sequelize = require('sequelize');
+const cors = require('cors');
 
 /**
   * Initialize Server
@@ -41,6 +42,7 @@ swagger.createSwaggerPage({
 server.use(restify.plugins.acceptParser(server.acceptable));
 server.use(restify.plugins.queryParser(server.acceptable));
 server.use(restify.plugins.bodyParser(server.acceptable));
+server.use(cors()); //Don't Forget CORS if you want to write client app in Javascript
 
 /**
   * Start Server, Connect to DB & Require Routes

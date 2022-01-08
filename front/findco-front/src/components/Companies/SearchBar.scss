@@ -1,0 +1,17 @@
+@import "./../../styles/variables.scss";
+.search-container {
+    width: 30%;
+
+    .search {
+        width: 200px;
+        h3 { padding-bottom: 20px; }
+    }
+    .searchbar {
+        justify-content: center;
+        height: 50px;
+        border: 1px solid $dark;
+        border-radius: 5px;
+        padding: 10px;
+        transition: 0.3s;
+    }
+}

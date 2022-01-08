@@ -50,11 +50,18 @@ $boxShadow: 0 1px 1px rgba(0, 0, 0, 0.25), 0 2px 2px rgba(0, 0, 0, 0.2),
 
 // breakpoints
 @mixin breakpoint($point) {
-    @if $point == xl {
+    @if $point == xxl {
+        // 1520px
+        @media (min-width: 95em) {
+            @content;
+        }
+    }
+    @else if $point == xl {
         // 1120px
         @media (min-width: 70em) {
             @content;
         }
+            
     } @else if $point == lg {
         // 1024px
         @media (min-width: 64em) {

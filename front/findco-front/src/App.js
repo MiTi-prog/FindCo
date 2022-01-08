@@ -21,7 +21,7 @@ import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import { useContext } from "react";
 import { AuthContext } from "./context/AuthContext";
-
+import PodjetjeVnos from "./components/Podjetja/PodjetjeVnos"
 
 function App() {
 
@@ -80,6 +80,9 @@ function App() {
                 </Route>
                 <Route exact path="/vprasanja">
                     <Vprasanja />
+                </Route>
+                <Route exact path="/vnos-podjetja">
+                    <PodjetjeVnos />
                 </Route>
 
             </Switch>

@@ -15,13 +15,12 @@ const HomePageContent = () => {
                 NAJ VAM DO TEGA POMAGAMO
             </span>
             <p className={classes.hero__content__description}>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere beatae itaque ea
-                ducimus, mollitia voluptate laudantium.
+                smo spletna platforma, ki povezuje uporabnike spleta in ponudnike različnih storitev
             </p>
             <div className={classes.hero__content__cta}>
-                <Button to="/">Search</Button>
-                <Button to="/learn-more" outline>
-                    Learn More
+                <Button to="/isci-podjetja">Iščem Storitev</Button>
+                <Button to="/vnos-podjetja" outline>
+                    Ponujam Storitev
                 </Button>
             </div>
         </Fragment>

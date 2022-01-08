@@ -24,13 +24,13 @@ const Nav = ({ isMenu, menuToggle }) => {
                 </li>
             </ul>
             <div className={classes.menu__nav__cta}>
-            <Button to="/" oranzna className={classes.booknow} onClick={menuToggle}>
-                Povpraševanje
+            <Button to="/vnos-podjetja" oranzna  onClick={menuToggle}>
+                Za Podjetja
             </Button>
             { 
                 user ?  <>  
                             <Button to="/moj-racun"  className={classes.booknow} onClick={menuToggle}>
-                                <IoPerson/> Moj ačun
+                                <IoPerson/> Moj račun
                             </Button>
                         </>
                 :   <>    

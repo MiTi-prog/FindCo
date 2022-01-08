@@ -20,10 +20,10 @@ const Nav = ({ isMenu, menuToggle }) => {
                 </li>
             </ul>
             <div className={classes.menu__nav__cta}>
-            <Button to="/" oranzna className={classes.booknow} onClick={menuToggle}>
-                Povpraševanje
+            <Button to="/vnos-podjetja" oranzna  onClick={menuToggle}>
+                Za Podjetja
             </Button>
-            <Button to="/"  className={classes.booknow} onClick={menuToggle}>
+            <Button to="/prijava" onClick={menuToggle}>
                 Prijava
             </Button>
             </div>

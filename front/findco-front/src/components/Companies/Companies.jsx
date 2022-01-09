@@ -7,32 +7,45 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import './Companies.scss';
 import './SearchBar.scss';
+import { useContext } from "react";
+import { AuthContext } from "./../../context/AuthContext";
 
 function Companies() {
-    /*const options = {
+/*
+    const options = {
         headers: {
           'Access-Control-Allow-Origin' : '*',
-          'Content-Type' : 'application/json'
-        }
-    };*/
+          'Content-Type' : 'application/json',
+		}
+    };
+	*/
 
     const [contractors, setContractors] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
     const [moreData, setMoreData] = useState([]);
+	
+	const { user } = useContext(AuthContext);
 
     useEffect(() => {
         const fetchContractors = async () => {
             try {
-                const response = await axios.get('https://cors-anywhere.herokuapp.com/http://find-co.herokuapp.com/api/v1/contractors'); //, options
+                const response = await axios.get('https://cors-everywheree.herokuapp.com/http://find-co.herokuapp.com/api/v1/contractors'); //, options
                 setContractors(
                     response.data.sort()
                 );
                 console.log('Contractors: ', response.data.sort());
-                console.log('Response', response.id);
+                console.log('Response', response.data[0].id);
                 
-                const contractor_info = 'https://cors-anywhere.herokuapp.com/http://find-co.herokuapp.com/api/v1/contractors/:'+response.id;
+                const contractor_info = 'https://cors-everywheree.herokuapp.com/http://find-co.herokuapp.com/api/v1/contractors/'+response.id;
+				//console.log(user.token);
 
-                const response2 = await axios.get(contractor_info);
+					const AuthHeaders = {
+					headers: {
+						Authorization: 'jwt ' + user.token
+					}
+				};
+				
+                const response2 = await axios.get(contractor_info, AuthHeaders);
                 setMoreData(response2.data);
                 
                 

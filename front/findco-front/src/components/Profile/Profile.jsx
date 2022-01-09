@@ -8,6 +8,7 @@ import { useContext } from "react";
 import { AuthContext } from "./../../context/AuthContext";
 import axios from "axios";
 import { useHistory } from "react-router";
+import jwt from 'jwt-decode' //To decode Json web token
 
 export default function Profile() {
     // textInput must be declared here so the ref can refer to it
@@ -25,6 +26,10 @@ export default function Profile() {
     const history = useHistory();
    
     const { user } = useContext(AuthContext);
+	
+	const UserData = jwt(user.token); // decode your token
+	console.log(UserData);
+	
     const handleClick = async (e) => {
         
         const options = {
@@ -33,7 +38,6 @@ export default function Profile() {
             'Authorization' : 'jwt ' + user.token
           } 
         };
-    
         const edit = {
           'firstName': firstName.current.value,
           'lastName': lastName.current.value,
@@ -53,7 +57,7 @@ export default function Profile() {
         } 
         else {
             try {
-                await axios.post('https://cors-anywhere.herokuapp.com/http://find-co.herokuapp.com/api/v1/user/edit', options, edit) //,options
+                await axios.post('https://cors-everywheree.herokuapp.com/http://find-co.herokuapp.com/api/v1/user/edit', options, edit) //,options
                 .then((response) => {
                     console.log('Response API: ', response);
                     alert('Podatki so bili posodobljeni');
@@ -85,60 +89,60 @@ export default function Profile() {
                           <form onSubmit={handleClick}>
 
                             <div class="form__group field">
-                                    <input type="input" class="form__field" placeholder="Ime" name="ime" id='ime' ref={firstName} required />
+                                    <input type="input" class="form__field" placeholder="Ime" name="ime" id='ime' value={UserData.first_name} ref={firstName} required />
                                     <label for="ime" class="form__label">Ime</label>
                             </div> <br /> 
 
                             <div class="form__group field">
-                                    <input type="input" class="form__field" placeholder="Priimek" name="priimek" id='priimek' ref={lastName} required />
+                                    <input type="input" class="form__field" placeholder="Priimek" name="priimek" id='priimek' value={UserData.last_name} ref={lastName} required />
                                     <label for="priimek" class="form__label">Priimek</label>
                             </div> <br /> 
 
                             <div class="form__group field">
-                                    <input type="input" class="form__field" placeholder="Email" name="email" id='email' ref={email} required />
+                                    <input type="input" class="form__field" placeholder="Email" name="email" id='email' value={UserData.email} ref={email} required />
                                     <label for="email" class="form__label">Email</label>
                             </div> <br /> 
 
                             <div class="form__group field">
-                                    <input type="password" class="form__field" placeholder="Geslo" name="geslo" id='geslo' ref={password} required />
+                                    <input type="password" class="form__field" placeholder="Geslo" name="geslo" id='geslo' value={'***********'} ref={password} required />
                                     <label for="geslo" class="form__label">Geslo</label>
                             </div> <br /> 
                                 
                             <div class="form__group field">
-                                    <input type="password" class="form__field" placeholder="Ponovi Geslo" name="ponoviGeslo" id='ponoviGeslo' ref={passwordAgain} required />
+                                    <input type="password" class="form__field" placeholder="Ponovi Geslo" name="ponoviGeslo" id='ponoviGeslo' value={'***********'} ref={passwordAgain} required />
                                     <label for="ponoviGeslo" class="form__label">Ponovi geslo</label>
                             </div> <br /> <br />
                                 
                             <div class="form__group field">
-                                    <input type="date" class="form__field" placeholder="Datum rojstva" name="datum" id='datum' ref={birthDate} required />
+                                    <input type="date" class="form__field" placeholder="Datum rojstva" name="datum" id='datum' value={UserData.date_birth} ref={birthDate} required />
                                     <label for="datum" class="form__label">Datum</label>
                             </div> <br /> 
                             
 
                             <div class="form__group field">
-                                    <input type="input" class="form__field" placeholder="Telefon" name="telefon" id='telefon' ref={phone} required />
+                                    <input type="input" class="form__field" placeholder="Telefon" name="telefon" id='telefon' value={UserData.phone} ref={phone} required />
                                     <label for="telefon" class="form__label">Telefon</label>
                             </div> <br /> 
 
                             
                             <div class="form__group field">
-                                    <input type="input" class="form__field" placeholder="Naslov" name="naslov" id='naslov' ref={address} required />
+                                    <input type="input" class="form__field" placeholder="Naslov" name="naslov" id='naslov' value={UserData.street_address} ref={address} required />
                                     <label for="naslov" class="form__label">Naslov</label>
                             </div> <br /> 
 
                             <div class="form__group field">
-                                    <input type="input" class="form__field" placeholder="Mesto" name="mesto" id='mesto' ref={city} required />
+                                    <input type="input" class="form__field" placeholder="Mesto" name="mesto" id='mesto' value={UserData.city} ref={city} required />
                                     <label for="mesto" class="form__label">Mesto</label>
                             </div> <br /> 
 
 
                             <div class="form__group field">
-                                    <input type="input" class="form__field" placeholder="Poštna št." name="posta" id='posta'  ref={postalCode} required />
+                                    <input type="input" class="form__field" placeholder="Poštna št." name="posta" id='posta' value={UserData.postal_code} ref={postalCode} required />
                                     <label for="posta" class="form__label">Poštna št.</label>
                             </div> <br /> 
 
                             <div class="form__group field">
-                                    <input type="input" class="form__field" placeholder="Država" name="drzava" id='drzava' ref={country} required />
+                                    <input type="input" class="form__field" placeholder="Država" name="drzava" id='drzava' value={UserData.country} ref={country} required />
                                     <label for="posta" class="form__label">Država</label>
                             </div> <br /> <br /><br /> <br />
 

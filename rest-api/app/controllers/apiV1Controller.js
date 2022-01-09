@@ -159,7 +159,6 @@ async function GetAlllContractors(req, res, next)
 async function GetContractor(req, res, next)
 {
     try {
-
         const contractor = await User.findOne(
             { where : {idApplication_user:Buffer.from(uuid.parse(req.params.id))},
             include: [{
@@ -167,6 +166,8 @@ async function GetContractor(req, res, next)
                 as: "companies",
                 required: true
             }], raw: true});
+
+        console.log(contractor);
 
         if (contractor === null) {
             res.status(404)
@@ -184,7 +185,7 @@ async function GetContractor(req, res, next)
                     company: {
                         name: contractor["companies.company_name"],
                         city: contractor["companies.city"],
-                        region: contractor["companies.region(location)"],
+                        region: contractor["companies.reg"],
                         country: contractor["companies.country"],
                         logo: contractor["companies.logo_image"],
                         line_of_work: contractor["companies.line_of_work"],

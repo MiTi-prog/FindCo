@@ -23,14 +23,14 @@ function Companies() {
     useEffect(() => {
         const fetchContractors = async () => {
             try {
-                const response = await axios.get('http://find-co.herokuapp.com/api/v1/contractors'); //, options
+                const response = await axios.get('https://cors-anywhere.herokuapp.com/http://find-co.herokuapp.com/api/v1/contractors'); //, options
                 setContractors(
                     response.data.sort()
                 );
                 console.log('Contractors: ', response.data.sort());
                 console.log('Response', response.id);
                 
-                const contractor_info = 'http://find-co.herokuapp.com/api/v1/contractors/:'+response.id;
+                const contractor_info = 'https://cors-anywhere.herokuapp.com/http://find-co.herokuapp.com/api/v1/contractors/:'+response.id;
 
                 const response2 = await axios.get(contractor_info);
                 setMoreData(response2.data);

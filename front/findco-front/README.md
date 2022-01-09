@@ -93,7 +93,6 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 ## Logo
 
-![Logo_F_letter_Blue-copy_Brez_](https://user-images.githubusercontent.com/56089916/148692861-01e5080f-276a-4530-85be-c8681d9dd96b.png)
 ![Logo_F_letter_Blue-copy_modrKvadratek](https://user-images.githubusercontent.com/56089916/148692871-4d5f16aa-b9c9-4dad-8eb0-d64e62ced88f.png)
 
 

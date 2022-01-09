@@ -71,11 +71,21 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 
 #WEB APP UI
-
+##Home page
 ![Posnetek zaslona 2022-01-09 175956](https://user-images.githubusercontent.com/56089916/148692639-f8df23d7-df94-457d-be31-3adb3638ddce.png)
 ![Posnetek zaslona 2022-01-09 180034](https://user-images.githubusercontent.com/56089916/148692647-96369498-c569-4f23-b4ef-9a56014c1221.png)
 ![Posnetek zaslona 2022-01-09 180054](https://user-images.githubusercontent.com/56089916/148692651-938e13f7-88aa-4fea-944a-3e7bc94b3b9f.png)
+
+## O Nas page / Pomembne Informacije
 ![Posnetek zaslona 2022-01-09 180128](https://user-images.githubusercontent.com/56089916/148692656-01875a71-1178-4098-808a-18ff91f1be98.png)
+![image](https://user-images.githubusercontent.com/56089916/148692752-06ad3258-93fe-4adb-baff-fd6424d6f49d.png)
+
+##Login Page
+![image](https://user-images.githubusercontent.com/56089916/148692711-ae7a03c2-3abb-4a28-9b92-107ab56eb09f.png)
+
+##Register Page
+![image](https://user-images.githubusercontent.com/56089916/148692726-d70df8c0-8f64-4556-87a5-f57538311a35.png)
+
 
 
 

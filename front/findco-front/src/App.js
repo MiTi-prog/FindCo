@@ -43,9 +43,6 @@ function App() {
                     <FavPodjetja />
                 </Route>
                 <Route path="/isci-podjetja">
-                    <Companies />
-                </Route>
-                <Route path="/isci-podjetja">
                     <SearchPodjetja />
                 </Route>
                 <Route path="/learn-more">
@@ -82,7 +79,7 @@ function App() {
                     <Vprasanja />
                 </Route>
                 <Route exact path="/vnos-podjetja">
-                    <PodjetjeVnos />
+                { user ? <PodjetjeVnos /> : <Login /> }
                 </Route>
 
             </Switch>

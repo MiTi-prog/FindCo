@@ -18,6 +18,7 @@ function Companies() {
 
     const [contractors, setContractors] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
+    const [moreData, setMoreData] = useState([]);
 
     useEffect(() => {
         const fetchContractors = async () => {
@@ -25,9 +26,16 @@ function Companies() {
                 const response = await axios.get('http://find-co.herokuapp.com/api/v1/contractors'); //, options
                 setContractors(
                     response.data.sort()
-                )
-                
+                );
                 console.log('Contractors: ', response.data.sort());
+                console.log('Response', response.id);
+                
+                const contractor_info = 'http://find-co.herokuapp.com/api/v1/contractors/:'+response.id;
+
+                const response2 = await axios.get(contractor_info);
+                setMoreData(response2.data);
+                
+                
             } catch (err) {
                 console.log(err);
             }
@@ -83,7 +91,14 @@ function Companies() {
                                 }
                             }).map((contractor) => (
                                 //props to Contractor-block component
-                                <ContractorBlock keys={contractor.id} contractor={contractor} />
+                                <>
+                                    <ContractorBlock keys={contractor.id} contractor={contractor} />
+                                    <div className="more-info">
+                                        {moreData.map((data) => (
+                                            <p>Naslov: {data.street_address}</p>
+                                        ))}
+                                    </div>
+                                </>
                             ))}
                         </div>
                         

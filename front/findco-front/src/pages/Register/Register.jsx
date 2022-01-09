@@ -28,7 +28,7 @@ export default function Register() {
 
     const user = {
       first_name: firstName.current.value,
-      last_name: lastName.current.value,
+      last_name: lastName.current.value, 
       email: email.current.value,
       password: password.current.value,
       date_birth: birthDate.current.value,

@@ -9,9 +9,8 @@ function ContractorBlock({ contractor }) {
             <div className="row">
                 <div className="contractor-block">
                     <div className="contractor-info">
-                        <h4>{contractor.company_name}</h4>
-                        <p>{contractor.first_name}</p>
-                        <p>{contractor.last_name}</p>
+                        <h4>Ime podjetja: {contractor.company_name}</h4>
+                        <p>Ime in priimek latnika: {contractor.first_name} {contractor.last_name}</p>
                     </div>
                     <div className="read-more">
                         <button className=''> 

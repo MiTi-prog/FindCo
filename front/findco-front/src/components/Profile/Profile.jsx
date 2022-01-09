@@ -4,21 +4,71 @@ import Footer from "../../components/Footer/Footer";
 import "./Profile.scss";
 import Button from "../../UI/Button/Button";
 import Hisa1 from "./../../assets/piseMajster.jpg";
+import { useContext } from "react";
+import { AuthContext } from "./../../context/AuthContext";
+import axios from "axios";
+import { useHistory } from "react-router";
 
-function Profile() {
+export default function Profile() {
     // textInput must be declared here so the ref can refer to it
-    const firstName = useRef(null);
-    const lastName = useRef(null);
-    const email = useRef(null);
-    const password = useRef(null);
-    const passwordAgain = useRef(null);
-    const birthDate = useRef(null);
-    const phone = useRef(null);
-    const address = useRef(null);
-    const city = useRef(null);
-    const postalCode = useRef(null);
-    const country = useRef(null);
+    const firstName = useRef();
+    const lastName = useRef();
+    const email = useRef();
+    const password = useRef();
+    const passwordAgain = useRef();
+    const birthDate = useRef();
+    const phone = useRef();
+    const address = useRef();
+    const city = useRef();
+    const postalCode = useRef();
+    const country = useRef();
+    const history = useHistory();
    
+    const { user } = useContext(AuthContext);
+    const handleClick = async (e) => {
+        
+        const options = {
+          headers: {
+            'Content-Type' : 'application/json',
+            'Authorization' : 'jwt ' + user.token
+          } 
+        };
+    
+        const edit = {
+          'firstName': firstName.current.value,
+          'lastName': lastName.current.value,
+          'email': email.current.value,
+          'password': password.current.value,
+          'date_birth': birthDate.current.value,
+          'phone': phone.current.value,
+          'street_address': address.current.value,
+          'city': city.current.value,
+          'postal_code': postalCode.current.value,
+          'country': country.current.value,
+        }
+    
+        e.preventDefault();
+        if (passwordAgain.current.value !== password.current.value) {
+            passwordAgain.current.setCustomValidity("Gesli se ne ujemata!");
+        } 
+        else {
+            try {
+                await axios.post('https://cors-anywhere.herokuapp.com/http://find-co.herokuapp.com/api/v1/user/edit', options, edit) //,options
+                .then((response) => {
+                    console.log('Response API: ', response);
+                    alert('Podatki so bili posodobljeni');
+                }, (error) => {
+                    alert('Prosimo, poskusite ponovno.');
+                    console.log('Api Error: ', error);
+                })
+                
+                history.push("/");
+            } catch (err) {
+                console.log(err);
+            }
+        }
+      };
+
     return (
         <>
         <Header />
@@ -32,10 +82,10 @@ function Profile() {
                     <div className="hero__content">
                         <h1 className="hero__content__title">Uredi Profil</h1>
                          
-                          <form>
+                          <form onSubmit={handleClick}>
 
                             <div class="form__group field">
-                                    <input type="input" class="form__field" placeholder="Ime" name="ime" id='ime'  ref={firstName} required />
+                                    <input type="input" class="form__field" placeholder="Ime" name="ime" id='ime' ref={firstName} required />
                                     <label for="ime" class="form__label">Ime</label>
                             </div> <br /> 
 
@@ -92,14 +142,15 @@ function Profile() {
                                     <label for="posta" class="form__label">Država</label>
                             </div> <br /> <br /><br /> <br />
 
-                         </form>
+                         
                         
-                         <div className="hero__content__cta">
-                            <Button to="/">Potrdi</Button>
-                            <Button to="/learn-more" outline>
-                                Prekliči
-                            </Button>
-                         </div>
+                            <div className="hero__content__cta">
+                                <button type="submit">Potrdi</button>
+                                <Button to="/learn-more" outline>
+                                    Prekliči
+                                </Button>
+                            </div>
+                        </form>
                 </div>
             </div>
         </div>
@@ -111,5 +162,3 @@ function Profile() {
         </>
     )
 }
-
-export default Profile

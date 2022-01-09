@@ -184,7 +184,7 @@ async function GetContractor(req, res, next)
                     company: {
                         name: contractor["companies.company_name"],
                         city: contractor["companies.city"],
-                        region: contractor["companies.region(location)"],
+                        region: contractor["companies.reg"],
                         country: contractor["companies.country"],
                         logo: contractor["companies.logo_image"],
                         line_of_work: contractor["companies.line_of_work"],

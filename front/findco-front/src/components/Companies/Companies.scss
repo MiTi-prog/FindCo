@@ -1,0 +1,145 @@
+@import "./../../styles/variables.scss";
+
+.container-search {
+    .row {
+        .banner {
+            img {
+                width: 100%;
+                z-index: -1;
+                top: 0;
+                left: 0;
+            }
+        }
+        .title {
+            display: flex;
+            color: #fff;
+            width: 600px;
+            justify-content: center;
+            align-items: center;
+            background: rgba(15, 21, 21, 0.6);
+            position: absolute;
+            z-index: 100;
+            border-radius: 5px;
+            left: 0;
+            right: 0;
+            font-size: 2.8rem;
+            text-transform: uppercase;
+            margin-top: -55%;
+            margin-left: auto;
+            font-weight: 700;
+            margin-right: auto;
+            padding: 30px;
+
+            @include breakpoint(sm-only) {
+                font-size: 1.5rem;
+                padding: 20px;
+                margin-top: -47%;
+            }    
+            @include breakpoint(sm) {
+                margin-top: -47%;
+            }
+            @include breakpoint(md) {
+                margin-top: -45%;
+            }
+            @include breakpoint(lg) {
+                margin-top: -50%;
+            }
+            @include breakpoint(xl) {
+                margin-top: -55%;
+            }
+            
+           
+                   
+        }
+        .contractors-content {
+            display: flex;
+            background-color: #fff;
+            width: 60%;
+            flex-direction: row;
+            position: relative;
+            min-height: 500px;
+            z-index: 100;
+            border-radius: 5px;
+            left: 0;
+            right: 0;
+            margin-top: -30%;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 30px;
+
+            @include breakpoint(sm-only) {
+                width: 90%;
+                flex-direction: column;
+            }
+            @include breakpoint(sm) {
+                width: 70%;
+                flex-direction: column;
+            }
+            @include breakpoint(md) {
+                width: 70%;
+                flex-direction: column;
+            }
+            @include breakpoint(lg) {
+                width: 70%;
+                flex-direction: row;
+            }
+            @include breakpoint(xl) {
+                margin-top: -40%;
+                width: 70%;
+                flex-direction: row;
+            }
+            @include breakpoint(xxl) {
+                margin-top: -45% !important;
+                flex-direction: row;
+            }
+            .contractors-list {
+                padding-left: 100px;
+                width: 70%;
+                overflow-y: scroll;
+                max-height: 1000px;
+                -ms-overflow-style: none;  /* IE and Edge */
+                scrollbar-width: none;  /* Firefox */
+                padding: 0;
+
+                @include breakpoint(sm-only) {
+                    padding: 50px 0;
+                    width: 100%;
+                }
+                @include breakpoint(sm) {
+                    padding: 50px 0;
+                    width: 100%;
+                }
+                @include breakpoint(md) {
+                    padding: 50px 0;
+                    width: 100%;
+                }
+                @include breakpoint(lg) {
+                    padding: 50px 0;
+                    width: 100%;
+                }
+                @include breakpoint(xl) {
+                    padding: 50px 0;
+                    width: 100%;
+                }
+                
+
+                &::-webkit-scrollbar {
+                    display: none;
+                }
+
+                .container-contractor {
+                    border-bottom: 2px solid;
+
+                    &:not(:first-child) {
+                        padding-top: 50px;
+                    }
+                }
+                .contractor-block {
+                    display: flex;
+                    justify-content: space-between;
+                    padding-bottom: 50px;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,35 @@
+@import "./reset.scss";
+@import "./variables.scss";
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    width: 100%;
+    font-family: $lato;
+}
+
+#root {
+    height: 100%;
+
+    @include breakpoint(sm-only) {
+        width: 100% !important;
+
+    }
+}
+
+h2 {
+    font-size: 28px;
+    font-weight: 700;
+}
+
+h3 {
+    font-size: 20px;
+    font-weight: 700;
+}

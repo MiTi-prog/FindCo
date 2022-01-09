@@ -1,2 +1,0 @@
-# FindCo
-FindCo university project

@@ -1,0 +1,45 @@
+@import "./../../styles/variables.scss";
+
+.button {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    border-radius: $borderRadius;
+    padding: $spacing-sm $spacing-lg;
+    font-family: inherit;
+    font-weight: 700;
+    letter-spacing: $letterSpacing;
+    font-size: 1.1rem;
+    background: $fModra;
+    color: $white;
+    border: 1px solid $fModra;
+    transition: all 0.3s ease;
+
+    &:hover {
+        background: transparent;
+        color: $white;
+    }
+
+    &.outline {
+        border: 2px solid $fModra;
+        background: transparent;
+        color: $fModra;
+
+        &:hover {
+            background: rgba($fModra, 0.2);
+            color: $white;
+        }
+    }
+
+    &.oranzna {
+            border: 2px solid $fOragne;
+            background: transparent;
+            color: $fOragne;
+    
+            &:hover {
+                background: rgba($fOragne, 0.2);
+                color: $white;
+            }
+        }
+    
+}

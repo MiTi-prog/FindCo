@@ -57,7 +57,7 @@ export default function Profile() {
         } 
         else {
             try {
-                await axios.post('https://cors-everywheree.herokuapp.com/http://find-co.herokuapp.com/api/v1/user/edit', options, edit) //,options
+                await axios.post('https://cors-everywheree.herokuapp.com/http://find-co.herokuapp.com/api/v1/user/edit', edit, options)
                 .then((response) => {
                     console.log('Response API: ', response);
                     alert('Podatki so bili posodobljeni');

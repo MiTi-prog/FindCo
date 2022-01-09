@@ -159,7 +159,6 @@ async function GetAlllContractors(req, res, next)
 async function GetContractor(req, res, next)
 {
     try {
-
         const contractor = await User.findOne(
             { where : {idApplication_user:Buffer.from(uuid.parse(req.params.id))},
             include: [{
@@ -167,6 +166,8 @@ async function GetContractor(req, res, next)
                 as: "companies",
                 required: true
             }], raw: true});
+
+        console.log(contractor);
 
         if (contractor === null) {
             res.status(404)

@@ -11,14 +11,7 @@ import { useContext } from "react";
 import { AuthContext } from "./../../context/AuthContext";
 
 function Companies() {
-/*
-    const options = {
-        headers: {
-          'Access-Control-Allow-Origin' : '*',
-          'Content-Type' : 'application/json',
-		}
-    };
-	*/
+
 
     const [contractors, setContractors] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');

@@ -19,6 +19,12 @@ function ContractorBlock({ contractor }) {
                             <h4>Ime in priimek latnika: </h4> <p> {contractor.first_name} {contractor.last_name}</p>
                         </div>
                         <div className='contractor'>
+                            <h4>Email: </h4> <p> {contractor.email}</p>
+                        </div>
+                        <div className='contractor'>
+                            <h4>Telefon: </h4> <p> {contractor.phone}</p>
+                        </div>
+                        <div className='contractor'>
                             <h4>Mesto: </h4> <p> {contractor.company_city}</p>
                         </div>
                         <div className='contractor'>
@@ -30,9 +36,9 @@ function ContractorBlock({ contractor }) {
                         
                     </div>
                     <div className="read-more">
-                        <button className=''> 
-                            Kontaktiraj
-                        </button>
+                            <button onClick={() => window.location = 'mailto:{contractor.email}'}> 
+                                Kontaktiraj
+                            </button>
                     </div>
                 </div>
             </div>

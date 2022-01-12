@@ -33,21 +33,15 @@ function Companies() {
                 setContractors(
                     response.data.sort()
                 );
-                console.log('Contractors: ', response.data.sort());
-                console.log('Response', response.data[0].id);
+                console.log('Contractors: ', response.data.length);
+                console.log('Response', response.data[0].company_region);
                 
-                const contractor_info = 'https://cors-everywheree.herokuapp.com/http://find-co.herokuapp.com/api/v1/contractors/'+response.id;
-				//console.log(user.token);
-
-					const AuthHeaders = {
+                const AuthHeaders = {
 					headers: {
 						Authorization: 'jwt ' + user.token
 					}
-				};
-				
-                const response2 = await axios.get(contractor_info, AuthHeaders);
-                setMoreData(response2.data);
-                
+                };
+
                 
             } catch (err) {
                 console.log(err);
@@ -59,7 +53,6 @@ function Companies() {
     
     return (
         <>
-        <Header />
             <div className="container-search">
                 <div className="row">
                     <div className="banner">
@@ -102,15 +95,13 @@ function Companies() {
                                 else if (val.last_name.toLowerCase().includes(searchTerm.toLowerCase())) {
                                     return val
                                 }
+                                else if (val.company_region.toLowerCase().includes(searchTerm.toLowerCase())) {
+                                    return val
+                                }
                             }).map((contractor) => (
                                 //props to Contractor-block component
                                 <>
                                     <ContractorBlock keys={contractor.id} contractor={contractor} />
-                                    <div className="more-info">
-                                        {moreData.map((data) => (
-                                            <p>Naslov: {data.street_address}</p>
-                                        ))}
-                                    </div>
                                 </>
                             ))}
                         </div>
@@ -118,7 +109,6 @@ function Companies() {
                     </div>
                 </div>
             </div>
-        <Footer />
         </>
     )
 }

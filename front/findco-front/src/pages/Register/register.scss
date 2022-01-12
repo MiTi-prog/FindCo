@@ -27,6 +27,24 @@
   justify-content: center;
 }
 
+.registrationLeft {
+  @include breakpoint(sm-only) {
+      margin-bottom: 20px;
+  }
+  @include breakpoint(sm) {
+      margin-bottom: 20px;
+  }
+  @include breakpoint(md) {
+      margin-bottom: 20px;
+  }
+  @include breakpoint(lg) {
+      margin-bottom: 0;
+  }
+  @include breakpoint(xl) {
+      margin-bottom: 0;
+  }
+}
+
 .registrationLogo {
   font-size: 50px;
   font-weight: 800;
@@ -80,7 +98,7 @@
 
 
 .loginRegisterButton{
-    width: 60%;
+    width: 100%;
     align-self: center;
     height: 50px;
     border-radius: 10px;

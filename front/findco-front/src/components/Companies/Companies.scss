@@ -138,10 +138,46 @@
                     display: flex;
                     justify-content: space-between;
                     padding-bottom: 50px;
+
+                    .read-more {
+                        @include breakpoint(sm-only) {
+                            padding-top: 20px;
+                        }
+                        @include breakpoint(sm) {
+                            padding-top: 20px;
+                        }
+                        @include breakpoint(md) {
+                            padding-top: 0;
+                        }
+                        @include breakpoint(lg) {
+                            padding-top: 0;
+                        }
+                        @include breakpoint(xl) {
+                            padding-top: 0;
+                        }
+                        
+                    }
+
+
+                    @include breakpoint(sm-only) {
+                        flex-direction: column;
+                    }
+                    @include breakpoint(sm) {
+                        flex-direction: column;
+                    }
+                    @include breakpoint(md) {
+                        flex-direction: row;
+                    }
+                    @include breakpoint(lg) {
+                        flex-direction: row;
+                    }
+                    @include breakpoint(xl) {
+                        flex-direction: row;
+                    }
                 
                     .contractor-info {
                         line-height: 1.4;
-                        
+
                         .contractor {
                             display: flex;
 

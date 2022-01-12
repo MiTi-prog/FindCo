@@ -13,7 +13,24 @@
   width: 70%;
   height: 70%;
   display: flex;
-}
+
+  @include breakpoint(sm-only) {
+      flex-direction: column;
+  }
+  @include breakpoint(sm) {
+      flex-direction: column;
+  }
+  @include breakpoint(md) {
+      flex-direction: column;
+  }
+  @include breakpoint(lg) {
+      flex-direction: row;
+  }
+  @include breakpoint(xl) {
+      flex-direction: row;
+  }
+    
+  }
 
 .loginLeft,
 .loginRight {
@@ -76,7 +93,7 @@
 }
 
 .loginRegisterButton{
-    width: 60%;
+    width: 100%;
     align-self: center;
     height: 50px;
     border-radius: 10px;

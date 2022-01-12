@@ -74,7 +74,7 @@ export default function Login() {
                 {isFetching ? (
                 <CircularProgress color="white" size="20px" />
               ) : (
-                "Prijavi se"
+                "Prijava"
               )}
             </button>
             <Link to='/registracija'>

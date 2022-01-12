@@ -157,7 +157,7 @@ export default function Register() {
               <button 
               className="loginRegisterButton"
               >
-                Prijava v račun
+                Prijava
               </button>
             </Link>
           </form>

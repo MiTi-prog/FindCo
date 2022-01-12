@@ -138,6 +138,23 @@
                     display: flex;
                     justify-content: space-between;
                     padding-bottom: 50px;
+                
+                    .contractor-info {
+                        line-height: 1.4;
+                        
+                        .contractor {
+                            display: flex;
+
+                            h4 {
+                                font-size: 16px;
+                                font-weight: 700;
+                            }
+
+                            p {
+                                padding-left: 5px;
+                            }
+                        }
+                    }
                 }
             }
         }

@@ -7,34 +7,34 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import './Companies.scss';
 import './SearchBar.scss';
+import { useContext } from "react";
+import { AuthContext } from "./../../context/AuthContext";
 
 function Companies() {
-    /*const options = {
-        headers: {
-          'Access-Control-Allow-Origin' : '*',
-          'Content-Type' : 'application/json'
-        }
-    };*/
+
 
     const [contractors, setContractors] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
     const [moreData, setMoreData] = useState([]);
+	
+	const { user } = useContext(AuthContext);
 
     useEffect(() => {
         const fetchContractors = async () => {
             try {
-                const response = await axios.get('https://cors-anywhere.herokuapp.com/http://find-co.herokuapp.com/api/v1/contractors'); //, options
+                const response = await axios.get('https://cors-everywheree.herokuapp.com/http://find-co.herokuapp.com/api/v1/contractors'); //, options
                 setContractors(
                     response.data.sort()
                 );
-                console.log('Contractors: ', response.data.sort());
-                console.log('Response', response.id);
+                console.log('Contractors: ', response.data.length);
+                console.log('Response', response.data[0].company_region);
                 
-                const contractor_info = 'https://cors-anywhere.herokuapp.com/http://find-co.herokuapp.com/api/v1/contractors/:'+response.id;
+                const AuthHeaders = {
+					headers: {
+						Authorization: 'jwt ' + user.token
+					}
+                };
 
-                const response2 = await axios.get(contractor_info);
-                setMoreData(response2.data);
-                
                 
             } catch (err) {
                 console.log(err);
@@ -46,7 +46,6 @@ function Companies() {
     
     return (
         <>
-        <Header />
             <div className="container-search">
                 <div className="row">
                     <div className="banner">
@@ -89,15 +88,13 @@ function Companies() {
                                 else if (val.last_name.toLowerCase().includes(searchTerm.toLowerCase())) {
                                     return val
                                 }
+                                else if (val.company_region.toLowerCase().includes(searchTerm.toLowerCase())) {
+                                    return val
+                                }
                             }).map((contractor) => (
                                 //props to Contractor-block component
                                 <>
                                     <ContractorBlock keys={contractor.id} contractor={contractor} />
-                                    <div className="more-info">
-                                        {moreData.map((data) => (
-                                            <p>Naslov: {data.street_address}</p>
-                                        ))}
-                                    </div>
                                 </>
                             ))}
                         </div>
@@ -105,7 +102,6 @@ function Companies() {
                     </div>
                 </div>
             </div>
-        <Footer />
         </>
     )
 }

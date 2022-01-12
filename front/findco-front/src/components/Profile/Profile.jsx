@@ -8,6 +8,7 @@ import { useContext } from "react";
 import { AuthContext } from "./../../context/AuthContext";
 import axios from "axios";
 import { useHistory } from "react-router";
+//import jwt from 'jwt-decode' //To decode Json web token
 
 export default function Profile() {
     // textInput must be declared here so the ref can refer to it
@@ -25,6 +26,10 @@ export default function Profile() {
     const history = useHistory();
    
     const { user } = useContext(AuthContext);
+	
+	//const UserData = jwt(user.token); // decode your token
+	//console.log(UserData);
+	
     const handleClick = async (e) => {
         
         const options = {
@@ -33,7 +38,6 @@ export default function Profile() {
             'Authorization' : 'jwt ' + user.token
           } 
         };
-    
         const edit = {
           'firstName': firstName.current.value,
           'lastName': lastName.current.value,
@@ -53,7 +57,7 @@ export default function Profile() {
         } 
         else {
             try {
-                await axios.post('https://cors-anywhere.herokuapp.com/http://find-co.herokuapp.com/api/v1/user/edit', options, edit) //,options
+                await axios.post('https://cors-everywheree.herokuapp.com/http://find-co.herokuapp.com/api/v1/user/edit', edit, options)
                 .then((response) => {
                     console.log('Response API: ', response);
                     alert('Podatki so bili posodobljeni');
@@ -133,7 +137,7 @@ export default function Profile() {
 
 
                             <div class="form__group field">
-                                    <input type="input" class="form__field" placeholder="Poštna št." name="posta" id='posta'  ref={postalCode} required />
+                                    <input type="input" class="form__field" placeholder="Poštna št." name="posta" id='posta' ref={postalCode} required />
                                     <label for="posta" class="form__label">Poštna št.</label>
                             </div> <br /> 
 
